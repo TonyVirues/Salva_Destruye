@@ -35,7 +35,6 @@ class Task {
     }
 }
 
-
 /**
  * Define class CRUD
  * made a task
@@ -52,8 +51,8 @@ class CRUD {
      * @param {*} nextId
      */
     constructor() {
-        this.tareas = [];
-        this.nextId = 1;
+        this.tareas = []; //Arraylist save a task
+        this.nextId = 1;  //Arraylist save a id
     }
 
     /**
@@ -61,6 +60,8 @@ class CRUD {
      * @param {*} descripcion 
      */
     addTarea(descripcion) {
+        
+        //made a new task and increment id in one
         let nuevaTarea = new Tarea(this.nextId, descripcion); //LET Estoy cambiando los const por las variables que siempre usamos
         this.tareas.push(nuevaTarea);
         this.nextId++;
@@ -80,13 +81,18 @@ class CRUD {
      * @param {*} nuevaDescripcion 
      */
     updateTarea(id, nuevaDescripcion) {
-        //
+
+        //Search in arraylist with for and uploading
         let tarea = this.tareas.find(t => t.id === id); //LET
         if (tarea) {
             tarea.setDescripcion(nuevaDescripcion);
         }
     }
 
+    /**
+     * Function delete task
+     * @param {*} id 
+     */
     deleteTarea(id) {
         this.tareas = this.tareas.filter(t => t.id !== id);
     }
