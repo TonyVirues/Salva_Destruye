@@ -3,7 +3,7 @@
  * add task in the table
  */
 
-class Task {
+class Tarea {  //Entity
 
     /**
      * Start construct
@@ -43,7 +43,7 @@ class Task {
  * delete a task
  */
 
-class CRUD {
+class TareaManager {  //Business Logic
 
     /**
      * Start construct
@@ -61,7 +61,7 @@ class CRUD {
      */
     addTarea(descripcion) {
         
-        //made a new task and increment id in one
+        //Made a new task and increment id in one
         let nuevaTarea = new Tarea(this.nextId, descripcion); //LET Estoy cambiando los const por las variables que siempre usamos
         this.tareas.push(nuevaTarea);
         this.nextId++;
@@ -85,7 +85,7 @@ class CRUD {
         //Search in arraylist with for and uploading
         let tarea = this.tareas.find(t => t.id === id); //LET
         if (tarea) {
-            tarea.setDescripcion(nuevaDescripcion);
+            tarea.setDescripcion(nuevaDescripcion); //llamada de la funcion dentro de la clase task
         }
     }
 
@@ -94,6 +94,131 @@ class CRUD {
      * @param {*} id 
      */
     deleteTarea(id) {
+
+        //Search in arraylist one task and delete with for
         this.tareas = this.tareas.filter(t => t.id !== id);
     }
+}
+/**
+ *
+ */
+const tareaManager = new TareaManager();
+
+/**
+ * Control variables
+ */
+let tareaEnEdicionId = null;
+
+/**
+ * Function generate rows and columns
+ */
+function renderTareas() {
+    
+    /**
+     * 
+     */
+    let tableBody = document.getElementById("tasktable");
+    tableBody.innerHTML = "";
+
+    let tareas = tareaManager.getTareas();
+
+    tareas.forEach(tarea => {
+        let row = document.createElement("tr");
+
+        row.innerHTML = `
+            <th scope="row">${tarea.id}</th>
+            <td>${tarea.getDescripcion()}</td>
+            <td>
+                <button class="btn btn-warning btn-sm me-2" onclick="editarTarea(${tarea.id})">
+                    Edit
+                </button>
+                <button class="btn btn-danger btn-sm">
+                    Delete
+                </button>
+            </td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+}
+
+//ejemplo para comprobar que funciona
+tareaManager.addTarea("Estudiar JavaScript");
+tareaManager.addTarea("Hacer el trabajo de Bootstrap");
+
+renderTareas();
+
+
+/**
+ * Function for cast Button save
+ */
+let saveTaskBtn = document.getElementById("saveTaskBtn"); //let
+let taskDescriptionInput = document.getElementById("taskDescription"); //let
+
+saveTaskBtn.addEventListener("click", () => {
+    let descripcion = taskDescriptionInput.value.trim(); //let
+
+    /**
+     * Condition to avoid empty input.
+     */
+    if (descripcion === "") {
+        alert("La descripción no puede estar vacía");
+        return;
+    }
+
+    /**
+     * Cast function add
+     */
+    tareaManager.addTarea(descripcion);
+
+    /**
+     * Clean
+     */
+    taskDescriptionInput.value = "";
+
+    /**
+     * Cast function for upload
+     */
+    renderTareas();
+
+    /**
+     * Close modal
+     */
+    let modal = bootstrap.Modal.getInstance(         //let
+        document.getElementById("taskModal")
+    );
+    modal.hide();
+});
+
+/**
+ * Function edit task for id
+ * @param {*} id 
+ * @returns 
+ */
+function editarTarea(id) {
+    let tarea = tareaManager.getTareas().find(t => t.id === id);
+    if (!tarea) return;
+
+    /**
+     * Keep the id being edited
+     */
+    tareaEnEdicionId = id;
+
+    /**
+     * Loading date in input
+     */
+    taskDescriptionInput.value = tarea.getDescripcion();
+
+    /**
+     * Changue title edit
+     */
+    document.querySelector("#taskModal .modal-title").textContent = "Editar tarea";
+
+    /**
+     * Open de modal
+     */
+    const modal = new bootstrap.Modal(
+        document.getElementById("taskModal")
+    );
+    modal.show();
 }
