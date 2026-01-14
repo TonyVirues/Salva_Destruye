@@ -100,7 +100,7 @@ class TareaManager {  //Business Logic
     }
 }
 /**
- *
+ * END CLASS
  */
 const tareaManager = new TareaManager();
 
@@ -144,7 +144,7 @@ function renderTareas() {
 
 //ejemplo para comprobar que funciona
 tareaManager.addTarea("Estudiar JavaScript");
-tareaManager.addTarea("Hacer el trabajo de Bootstrap");
+tareaManager.addTarea("Haciendo cosas de durillo");
 
 renderTareas();
 
