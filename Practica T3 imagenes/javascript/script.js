@@ -1,53 +1,132 @@
 // Referencias a elementos del DOM No mires salva...no quiero que llores..
-const rowsSelect = document.getElementById("rowsSelect");
-const imageList = document.getElementById("imageList");
 
-// Función para generar imágenes
+
+//Generador de datos
+const conjuntosDatos = {
+    datos1: {
+        categorias: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+        valores: [40, 30, 20, 10]
+    },
+    datos2: {
+        categorias: ["Bits", "Vectoriales", "SVG", "ApexCharts"],
+        valores: [25, 25, 30, 20]
+    }
+};
+
+
+
+
+let cantidadSelector = document.getElementById("cantidadSelector");
+let tablaImagenes = document.getElementById("tablaImagen");
+let datosSelector = document.getElementById("datosSelector");
+/**
+ * Función para generar imágenes
+ * @param {*} cantidad 
+ */
 function generarImagenes(cantidad) {
-    imageList.innerHTML = ""; // Limpiar listado
+
+    /**
+     * limpiamos la tabla
+     */
+    tablaImagenes.innerHTML = "";
 
     for (let i = 1; i <= cantidad; i++) {
 
-        const col = document.createElement("div");
-        col.className = "col-sm-6 col-md-4 col-lg-3 mb-4";
+        //Crear las celdas
+        const filas = document.createElement("tr");
 
-        const card = document.createElement("div");
-        card.className = "card text-center h-100";
+        //Crear la celda con el id
+        const celdaId = document.createElement("td");
+        celdaId.textContent = i;
 
-        // Cache-busting con timestamp
-        const timestamp = new Date().getTime();
+        //Crear las celdas con las imagenes
+        const celdaImagenes = document.createElement("td");
+        const imagenes = document.createElement("img");
 
-        const img = document.createElement("img");
-        img.src = `https://picsum.photos/200/200?random=${i}&t=${timestamp}`;
-        img.className = "card-img-top rounded-circle mx-auto mt-3";
-        img.loading = "lazy";
-        img.alt = `Imagen ${i}`;
 
-        const cardBody = document.createElement("div");
-        cardBody.className = "card-body";
+        const timestamp = Date.now(); //const timestamp = new Date().getTime(); //averiguar que es esto
+        imagenes.src = `https://picsum.photos/10/10?random=${i}&t=${timestamp}`;
+        imagenes.className = "card-img-top rounded-circle mx-auto mt-3";
+        imagenes.loading = "lazy";
+        imagenes.alt = `Imagen ${i}`;
+        celdaImagenes.appendChild(imagenes);
 
-        const title = document.createElement("h6");
-        title.textContent = `Imagen ID: ${i}`;
+        //Celda para la descripción
+        const celdaDescripcion = document.createElement("td");
+        celdaDescripcion.textContent = "Imágen aleatoria de Picsum.photos";
 
-        const desc = document.createElement("p");
-        desc.className = "text-muted small";
-        desc.textContent = "Imagen generada desde Picsum.photos";
+        //appendchilld
+        filas.appendChild(celdaId);
+        filas.appendChild(celdaImagenes);
+        filas.appendChild(celdaDescripcion);
 
-        cardBody.appendChild(title);
-        cardBody.appendChild(desc);
+        tablaImagenes.appendChild(filas);
+    }
+}
+//Cantidad del selector
+cantidadSelector.addEventListener("change", () => {
+    generarImagenes(cantidadSelector.value);
+});
 
-        card.appendChild(img);
-        card.appendChild(cardBody);
-        col.appendChild(card);
+/**
+ * LLamada de la función para crear
+ * las celdas y las imagenes
+ */
+generarImagenes(cantidadSelector.value);
 
-        imageList.appendChild(col);
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<----------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+/**
+ * SEPARACION DEL PRIMER 
+ * APARTADO
+ * Y DEL
+ * SEGUNDO APARTADO
+ * QUE NO VEO NA
+ */
+
+/**
+ * grafico de ejemplo
+ * @param {*}  
+ */
+let graficoBarras;
+
+function crearGraficoBarras(datos) {
+
+    const opciones = {
+        chart: {
+            type: "bar",
+            height: 300
+        },
+        series: [{
+            name: "Valores",
+            data: datos.valores
+        }],
+        xaxis: {
+            categories: datos.categorias
+        }
+    };
+
+    if (graficoBarras) {
+        graficoBarras.updateOptions(opciones);
+    } else {
+        graficoBarras = new ApexCharts(
+            document.querySelector("#graficoBarras"),
+            opciones
+        );
+        graficoBarras.render();
     }
 }
 
-// Evento cambio selector
-rowsSelect.addEventListener("change", () => {
-    generarImagenes(rowsSelect.value);
-});
 
-// Generar imágenes iniciales
-generarImagenes(rowsSelect.value);
+function actualizarGrafico() {
+    const datosSeleccionados = conjuntosDatos[datosSelector.value];
+    crearGraficoBarras(datosSeleccionados);
+}
+
+
+
+datosSelector.addEventListener("change", actualizarGrafico);
+
+// Gráfico inicial
+actualizarGrafico();
+
+

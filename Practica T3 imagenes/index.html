@@ -13,57 +13,68 @@
         <!--Container main-->
         <div class="container">
             <div>
-                <h1 class=" mt-4 text-center mb-4">Imagenes bits y vectoriales</h1>
+                <h1 class="mt-4 text-center mb-4">Imagenes bits y vectoriales</h1>
                 <hr>
             </div>
+            <h2 class="mt-4 text-center mb-4">Generador de Imágenes</h2>
             <!--Container selector number rows-->
             <div class="selector">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Número de filas</option>
-                    <option value="1">5</option>
-                    <option value="2">10</option>
-                    <option value="3">20</option>
-                    <option value="4">50</option>
+                <select id="cantidadSelector" class="form-select" aria-label="Default select example">
+                    <option selected>Número de imágenes</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
                 </select>
             </div>
             <hr>
 
             <!--Image list-->
-            <!--Date format-->
-            <div class="selector">
-                <select class="form-select mb-4" aria-label="Default select example">
-                    <option selected>Dato</option>
-                    <option value="1">2</option>
-                </select>
-            </div>
             <div>
                 <!--Start table-->
                 <table class="table table-striped table-dark text-center mt-4">
-                <thead>
-                    <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Descripción</th>
-                    </tr>
-                </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>fu</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>durillo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>pinturillo</td>
-                        </tr>
-                    </tbody>
-                </table>
-                    <!---->
 
+                    <!--Cabeza de tabla-->
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Imágen</th>
+                            <th scope="Col">Descripción</th>
+                        </tr>
+                    </thead>
+
+                    <!--Cuerpo de tabla-->
+                    <tbody id ="tablaImagen">
+                        <!--Generador de celdas con imágenes-->
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        <hr>
+        <!--Contenedor para los datos-->
+        <div class="container">
+            
+            <h2 class="mt-4 text-center mb-4">Gráficos</h2>
+
+            <div class="selector">
+
+                <select id="datosSelector" class="form-select mb-4" aria-label="Default select example">
+                    <option selected>Datos</option>
+                    <option value="datos1">Datos 1</option>
+                    <option value="datos2">Datos 2</option>
+                </select>
+
+            </div>
+
+            <!--Gráficos-->
+            <div class="row">
+                <div  id="graficos" class="col-md-6 bg-primary">
+                    <div id="graficoBarras"></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="graficoDonut"></div>
+                </div>
             </div>
 
         </div>
