@@ -54,10 +54,10 @@ body{
   border-radius: 3px;
   position: absolute;
   left: 5%;
-  bottom: 22px;
+  bottom: 25px;
 }
 
-.elapsed {
+#progressBar {
   width: 42%;
   background-color: #1db954;
   height: 100%;
@@ -68,7 +68,7 @@ body{
   color: white;
   display: flex;
   position: absolute;
-  bottom: 30px;
+  bottom: 3px;
   left: 0;
   width: 100%;
   justify-content: center;
@@ -76,7 +76,7 @@ body{
 
 .volume {
   height: 100%;
-  width: 48px;
+  width: 80px;
 }
 
 .air {
@@ -136,12 +136,12 @@ body{
 }
 
 .time_now {
-  bottom: 11px;
+  bottom: 14px;
   left: 10px;
 }
 
 .time_full {
-  bottom: 11px;
+  bottom: 14px;
   right: 10px;
 }
 
