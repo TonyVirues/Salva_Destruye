@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Server Discord</title>
+    <!--Links-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <main class="bg-dark text-white">
+        <div id="main" class="container">
+            <h1 class="text-center">SERVIDOR DISCORD</h1>
+
+            <!--Music control-->
+            <div class="card mt-4">
+                <div class="top">
+                    <div class="pfp">
+                        <div class="playing" id="playingAnimation">
+                            <div class="greenline line-1"></div>
+                            <div class="greenline line-2"></div>
+                            <div class="greenline line-3"></div>
+                            <div class="greenline line-4"></div>
+                            <div class="greenline line-5"></div>
+                        </div>
+                    </div>
+
+                    <div class="texts">
+                        <p class="title-1" id="songTitle">Loading...</p>
+                        <p class="title-2" id="songArtist">Discord Server</p>
+                    </div>
+                </div>
+
+                <div class="controls">
+
+                        <!--Volumen/mute-->
+                    <svg id="muteBtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" height="20" width="24" class="volume_button">
+                        <path clip-rule="evenodd" d="M11.26 3.691A1.2 1.2 0 0 1 12 4.8v14.4a1.199 1.199 0 0 1-2.048.848L5.503 15.6H2.4a1.2 1.2 0 0 1-1.2-1.2V9.6a1.2 1.2 0 0 1 1.2-1.2h3.103l4.449-4.448a1.2 1.2 0 0 1 1.308-.26Z" fill-rule="evenodd"></path>
+                    </svg>
+
+                    <div class="volume">
+                        <div class="slider">
+                            <div class="green" id="volumeBar"></div>
+                        </div>
+                        <div class="circle"></div>
+                    </div>
+
+                        <!--Before-->
+                    <svg id="prevSong" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" height="24" width="24">
+                        <path clip-rule="evenodd" d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm.848-12.352a1.2 1.2 0 0 0-1.696-1.696l-3.6 3.6a1.2 1.2 0 0 0 0 1.696l3.6 3.6a1.2 1.2 0 0 0 1.696-1.696L11.297 13.2H15.6a1.2 1.2 0 1 0 0-2.4h-4.303l1.551-1.552Z" fill-rule="evenodd"></path>
+                    </svg>
+
+                        <!--After-->
+                    <svg id="nextSong" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor" height="24" width="24">
+                        <path clip-rule="evenodd" d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!--Redes sociales-->
+            <div>
+
+            </div>
+
+            <!--Audio-->
+        </div>
+    </main>
+    <!--Javascrip and popper-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+    <script src="javascript/script.js"></script> 
+</body>
+</html>
