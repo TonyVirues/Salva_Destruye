@@ -1,5 +1,7 @@
 /**
  * Creación de elementos
+ * Botones a la escucha
+ * o como me gusta decir a mi "cast"botones
  */
 const audio = document.getElementById("bgMusic");
 
@@ -66,7 +68,7 @@ function formatTime(seconds) {
   return `${min}:${sec < 10 ? "0" : ""}${sec}`;
 }
 /**
- * play?
+ * 
  */
 audio.addEventListener("timeupdate", () => {
   if (!audio.duration) return;
@@ -92,12 +94,16 @@ playPauseBtn.addEventListener("click", () => {
   }
 });
 
-// Cambiar volumen visual
+/**
+ * 
+ */
 function updateVolumeBar() {
   volumeBar.style.width = (audio.volume * 100) + "%";
 }
 
-// Mute / Unmute
+/**
+ * Mutear y desmutear
+ */
 muteBtn.addEventListener("click", () => {
   if (audio.muted) {
     audio.muted = false;
@@ -108,19 +114,21 @@ muteBtn.addEventListener("click", () => {
   updateVolumeBar();
 });
 
-// Canción anterior
+//Canción anterior
 prevBtn.addEventListener("click", () => {
   currentSong = (currentSong - 1 + songs.length) % songs.length;
   loadSong(currentSong);
 });
 
-// Canción siguiente
+//Canción siguiente
 nextBtn.addEventListener("click", () => {
   currentSong = (currentSong + 1) % songs.length;
   loadSong(currentSong);
 });
 
-// Teclado
+/**
+ * Teclado sin tocar
+ */
 document.addEventListener("keydown", (e) => {
   if (e.code === "ArrowLeft") prevBtn.click();
   if (e.code === "ArrowRight") nextBtn.click();
