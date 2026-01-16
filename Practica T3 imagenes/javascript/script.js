@@ -1,7 +1,7 @@
-// Referencias a elementos del DOM No mires salva...no quiero que llores..
 
-
-//JSON
+/**
+ * JSON
+ */
 const conjuntosDatos = {
     datos1: {
         categorias: ["HTML", "CSS", "JavaScript", "Bootstrap"],
