@@ -1,15 +1,17 @@
 // Referencias a elementos del DOM No mires salva...no quiero que llores..
 
 
-//Generador de datos
+//JSON
 const conjuntosDatos = {
     datos1: {
         categorias: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-        valores: [40, 30, 20, 10]
+        valores: [40, 30, 20, 10],
+        colores: ["#0d6efd", "#6610f2", "#198754", "#ffc107"]
     },
     datos2: {
         categorias: ["Bits", "Vectoriales", "SVG", "ApexCharts"],
-        valores: [25, 25, 30, 20]
+        valores: [25, 25, 30, 20],
+        
     }
 };
 
@@ -45,8 +47,8 @@ function generarImagenes(cantidad) {
 
 
         const timestamp = Date.now(); //const timestamp = new Date().getTime(); //averiguar que es esto
-        imagenes.src = `https://picsum.photos/20/20?random=${i}&t=${timestamp}`;
-        imagenes.className = "card-img-top rounded-circle mx-auto mt-3";
+        imagenes.src = `https://picsum.photos/100/100?random=${i}&t=${timestamp}`;
+        imagenes.className = "rounded-circle mx-auto mt-3";
         imagenes.loading = "lazy";
         imagenes.alt = `Imagen ${i}`;
         celdaImagenes.appendChild(imagenes);
@@ -96,6 +98,12 @@ function crearGraficoBarras(datos) {
             type: "bar",
             height: 300
         },
+        plotOptions: {
+            bar: {
+                distributed: true
+            }
+        },
+        colors: datos.colores,
         series: [{
             name: "Valores",
             data: datos.valores
@@ -115,18 +123,43 @@ function crearGraficoBarras(datos) {
         graficoBarras.render();
     }
 }
+/**
+ * Gráfico donut
+ */
+let graficoDonut;
+
+
+
+function crearGraficoDonut(datos) {
+    const opciones = {
+        chart: {
+            type: "donut",
+            height: 300
+        },
+        series: datos.valores,
+        labels: datos.categorias
+    };
+
+    if (graficoDonut) {
+        graficoDonut.updateOptions(opciones);
+    } else {
+        graficoDonut = new ApexCharts(
+            document.querySelector("#graficoDonut"),
+            opciones
+        );
+        graficoDonut.render();
+    }
+}
+
 
 
 function actualizarGrafico() {
     const datosSeleccionados = conjuntosDatos[datosSelector.value];
     crearGraficoBarras(datosSeleccionados);
+    crearGraficoDonut(datosSeleccionados);
 }
-
-
 
 datosSelector.addEventListener("change", actualizarGrafico);
 
 // Gráfico inicial
 actualizarGrafico();
-
-
