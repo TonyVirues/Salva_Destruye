@@ -11,6 +11,7 @@ const conjuntosDatos = {
     datos2: {
         categorias: ["Bits", "Vectoriales", "SVG", "ApexCharts"],
         valores: [25, 25, 30, 20],
+        colores: ["#0d6efd", "#6610f2", "#198754", "#ffc107"]
         
     }
 };
@@ -121,7 +122,7 @@ function crearGraficoBarras(datos) {
             opciones
         );
         graficoBarras.render();
-    }
+    };
 }
 /**
  * Gráfico donut
@@ -136,6 +137,12 @@ function crearGraficoDonut(datos) {
             type: "donut",
             height: 300
         },
+                plotOptions: {
+            pie: {
+                distributed: true
+            }
+        },
+        colors: datos.colores,
         series: datos.valores,
         labels: datos.categorias
     };
@@ -148,7 +155,7 @@ function crearGraficoDonut(datos) {
             opciones
         );
         graficoDonut.render();
-    }
+    };
 }
 
 
