@@ -94,7 +94,8 @@ function crearGraficoBarras(datos) {
     const opciones = {
         chart: {
             type: "bar",
-            height: 300
+            height: 300,
+            foreColor: "#ffff"
         },
         plotOptions: {
             bar: {
@@ -132,7 +133,8 @@ function crearGraficoDonut(datos) {
     const opciones = {
         chart: {
             type: "donut",
-            height: 300
+            height: 300,
+            foreColor: "#ffff"
         },
                 plotOptions: {
             pie: {
