@@ -45,7 +45,7 @@ function generarImagenes(cantidad) {
 
 
         const timestamp = Date.now(); //const timestamp = new Date().getTime(); //averiguar que es esto
-        imagenes.src = `https://picsum.photos/10/10?random=${i}&t=${timestamp}`;
+        imagenes.src = `https://picsum.photos/20/20?random=${i}&t=${timestamp}`;
         imagenes.className = "card-img-top rounded-circle mx-auto mt-3";
         imagenes.loading = "lazy";
         imagenes.alt = `Imagen ${i}`;
