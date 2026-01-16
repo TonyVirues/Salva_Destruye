@@ -5,12 +5,12 @@
 const conjuntosDatos = {
     datos1: {
         categorias: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-        valores: [40, 30, 20, 10],
+        valores: [40, 5, 45, 10],
         colores: ["#0d6efd", "#6610f2", "#198754", "#ffc107"]
     },
     datos2: {
-        categorias: ["Bits", "Vectoriales", "SVG", "ApexCharts"],
-        valores: [25, 25, 30, 20],
+        categorias: ["Recepciones", "Colocaciones", "Remates", "Lesiones"],
+        valores: [50, 40, 10, 0],
         colores: ["#0d6efd", "#6610f2", "#198754", "#ffc107"]
         
     }
@@ -18,10 +18,16 @@ const conjuntosDatos = {
 
 
 
-
+/**
+ * variables creadas para elementos
+ * selector número de imágenes
+ * imagenes
+ * selector datos
+ */
 let cantidadSelector = document.getElementById("cantidadSelector");
 let tablaImagenes = document.getElementById("tablaImagen");
 let datosSelector = document.getElementById("datosSelector");
+
 /**
  * Función para generar imágenes
  * @param {*} cantidad 
@@ -47,7 +53,7 @@ function generarImagenes(cantidad) {
         const imagenes = document.createElement("img");
 
 
-        const timestamp = Date.now(); //const timestamp = new Date().getTime(); //averiguar que es esto
+        const timestamp = Date.now();//Evitando el cache. Trucos que se aprenden
         imagenes.src = `https://picsum.photos/100/100?random=${i}&t=${timestamp}`;
         imagenes.className = "rounded-circle mx-auto mt-3";
         imagenes.loading = "lazy";
@@ -77,17 +83,8 @@ cantidadSelector.addEventListener("change", () => {
  */
 generarImagenes(cantidadSelector.value);
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<----------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /**
- * SEPARACION DEL PRIMER 
- * APARTADO
- * Y DEL
- * SEGUNDO APARTADO
- * QUE NO VEO NA
- */
-
-/**
- * grafico de ejemplo
+ * grafico de barra
  * @param {*}  
  */
 let graficoBarras;
@@ -158,7 +155,9 @@ function crearGraficoDonut(datos) {
     };
 }
 
-
+/**
+ * Función que actuliza los graficos con los datos
+ */
 
 function actualizarGrafico() {
     const datosSeleccionados = conjuntosDatos[datosSelector.value];
