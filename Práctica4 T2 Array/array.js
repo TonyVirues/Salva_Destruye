@@ -64,5 +64,31 @@ console.log("los aprobados son: ",aprobados);
 
 //Ordena a los estudiantes por edad con sort.
 console.log(arrEstudiantes.sort((a,b) => a.nota - b.nota));
-console.log("Probando la linea",arrEstudiantes[2]);
-console.log("Ordenando por edad",ordenarEdad);
+let ordenarEstudiantes= arrEstudiantes.sort((a,b)=>a.edad - b.edad);
+console.table(ordenarEstudiantes);
+
+//Usa map para crear un array que solo contenga los nombres de los estudiantes.
+let nombres = arrEstudiantes.map(i => i.nombre);
+console.table(nombres);
+
+//Cálcula la nota promedio de los estudiantes con reduce.
+let media = arrEstudiantes.reduce((acum,i) => (acum + i.nota)/2,0);
+console.table(media);
+
+/**
+ * Ejercicio 4
+ */
+
+//Crea un array con una lista de palabras (puedes inventarlas).
+let palabritas = ["si","durillo","duramen","imodaba","cosquillas"];
+
+//Usa filter para encontrar las palabras que tienen más de 5 letras.
+let encontrarPalabras = palabritas.filter(i => i.length >5);
+console.table(encontrarPalabras);
+
+//Invierte las letras de cada palabra utilizando map y split/reverse/join.
+
+let delReves = palabritas.split(" ");
+let delrevesTodo = delReves.reverse();
+let arrayDelReves = delrevesTodo.join("-");
+console.table(arrayDelReves);
