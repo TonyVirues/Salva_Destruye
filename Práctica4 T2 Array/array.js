@@ -138,6 +138,10 @@ let dividida2 = ["El","durillo","supremo","mecachis","bellisima"];
 let conBella = dividida2.includes("bellisima");
 console.table(conBella);
 
+/**
+ * Parte 7
+ */
+
 //Crea un array de números aleatorios entre 1 y 100 (usa Math.random y un bucle para generarlos).
 let random;
 let arrayRandom =[];
