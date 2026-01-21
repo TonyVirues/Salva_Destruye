@@ -87,8 +87,22 @@ let encontrarPalabras = palabritas.filter(i => i.length >5);
 console.table(encontrarPalabras);
 
 //Invierte las letras de cada palabra utilizando map y split/reverse/join.
+let ordenar = palabritas.map(palabra=>palabra.split("").reverse().join(""));
+console.table(ordenar);
 
-let delReves = palabritas.split(" ");
-let delrevesTodo = delReves.reverse();
-let arrayDelReves = delrevesTodo.join("-");
-console.table(arrayDelReves);
+//Ordena las palabra por longitud usando una función personalizada en sort
+console.log(palabritas.sort((a,b)=>a.length-b.length));
+
+/**
+ * Ejercicio 5
+ * 
+ */
+
+//Crea dos arrays de números enteros de igual longitud.
+let numeroEnteroPrimero = [2,4,6];
+let numeroEnteroSegundo = [1,3,5];
+
+//Usa map para crear un nuevo array que contenga la suma de los elementos corresondientes de ambos arrays.
+let sumaTotalDosArrays = numeroEnteroPrimero.map((num, i) => num+numeroEnteroSegundo[i].reduce(((acum,i)=>acum+i,0)));
+console.log("Sus castas toas");
+console.log(sumaTotalDosArrays);
