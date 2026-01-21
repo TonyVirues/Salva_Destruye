@@ -103,6 +103,6 @@ let numeroEnteroPrimero = [2,4,6];
 let numeroEnteroSegundo = [1,3,5];
 
 //Usa map para crear un nuevo array que contenga la suma de los elementos corresondientes de ambos arrays.
-let sumaTotalDosArrays = numeroEnteroPrimero.map((num, i) => num+numeroEnteroSegundo[i].reduce(((acum,i)=>acum+i,0)));
+let sumaTotalDosArrays = numeroEnteroPrimero.map((num, i) => num+numeroEnteroSegundo[i]).reduce((acum,i)=>acum+i,0);
 console.log("Sus castas toas");
 console.log(sumaTotalDosArrays);
