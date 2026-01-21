@@ -1,10 +1,10 @@
 /**
  * Ejercicio 1
  */
-//Crea un array con los números del 1 al 10.
 
-let numeros = new Array(1,2,3,4,5,6,7,8,9,10);
-console.log(numeros[9]);
+//Crea un array con los números del 1 al 10.
+let numeros = new Array(1,2,3,12,5,6,7,8,9,10);
+console.table(numeros);
 
 //Usa método map para crear un nuevo array que contenga los cuadros de los números originales.
 let dobles = numeros.map(num => num*2);
@@ -106,3 +106,59 @@ let numeroEnteroSegundo = [1,3,5];
 let sumaTotalDosArrays = numeroEnteroPrimero.map((num, i) => num+numeroEnteroSegundo[i]).reduce((acum,i)=>acum+i,0);
 console.log("Sus castas toas");
 console.log(sumaTotalDosArrays);
+
+//Multiplica los elementos de una array por su indice usando map.
+let numerosMultiplicados = numeros.map((num,i) => num*i);
+console.table(numerosMultiplicados);
+
+//Encuentra el índice del primer número mayor a 10 en uno de los arrays usando findIndex.
+let encuentraIndice = numeros.findIndex(num => num>10);
+console.log("El array numeros");
+console.table(numeros);
+console.log("El array encuentraIndice");
+console.log(encuentraIndice);
+
+/**
+ * Parte 6
+ */
+
+//Crea un array con una frase dividida en palabras.
+let dividida = ["El","durillo","supremo","mecachis"];
+console.table(dividida);
+let fusion = dividida.reduce((a,b)=>a+b);
+console.table(fusion);
+
+//Invierte el orden de las palabras usando reverse.
+console.log(dividida.reverse());
+
+//Busca si la palabra "bella" está en la frase utilizando includes.
+let sinBella = dividida.includes("bella");
+console.table(sinBella);
+let dividida2 = ["El","durillo","supremo","mecachis","bellisima"];
+let conBella = dividida2.includes("bellisima");
+console.table(conBella);
+
+//Crea un array de números aleatorios entre 1 y 100 (usa Math.random y un bucle para generarlos).
+let random;
+let arrayRandom =[];
+for (let i = 0; i < 20; i++) {
+    random=Math.floor(Math.random()*99);
+    arrayRandom[i]=random;
+}
+console.log("números aleatorios del 1 al 100");
+console.table(arrayRandom);
+
+//Encuentra el número más alto con Math.max y spread operator.
+console.log("el número mas grande es");
+let numMax=Math.max(...arrayRandom);
+console.log(numMax);
+
+//Encuentra el número más bajo de forma similar.
+console.log("el número mas chico es");
+let numMin=Math.min(...arrayRandom);
+console.log(numMin);
+
+//Calcula la cantidad de números impares usando filter.
+let impares = arrayRandom.filter(valor => valor%2===1);
+console.log("Los impares son: ")
+console.table(impares);
