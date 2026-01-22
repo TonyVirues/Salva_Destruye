@@ -138,28 +138,33 @@
             <form>
                 <!--Contenedor inputs-->
                 <div class="row g-3 align-items-center">
-                    <!--1 input-->
+                    <!--1 Selector-->
                     <div class="col-auto">
-                        <input type="text"class="form-control">
-                    </div>
-                    <!--2 input-->
-                    <div class="col-auto">
-                        <input type="text"class="form-control">
-                    </div>
-                    <!--3 input-->
-                    <div class="col-auto">
-                        <div class="col-auto">
-                            <input type="text"class="form-control">
+                        <div class="selector">
+                            <select id="cantidadSelector" class="form-select">
+                                <option selected>Seleccionar cliene</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
                         </div>
                     </div>
-                    <!--4 input-->
+                    <!--2 Selector-->
                     <div class="col-auto">
-                        <div class="col-auto">
-                            <input type="text"class="form-control">
+                        <div class="selector">
+                            <select id="cantidadSelector" class="form-select">
+                                <option selected>Seleccionar viaje </option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-auto">
                         <button type="button" class="btn btn-danger">Base class</button>
+                        <i class="bi bi-airplane"></i>
                     </div>
                 </div>
             </form>
@@ -196,7 +201,7 @@
             </table>
         </div>
     </main>
-            <!--Javascrip-->
+        <!--Javascrip-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
         <script src="javascript/script.js"></script>
 </body>
