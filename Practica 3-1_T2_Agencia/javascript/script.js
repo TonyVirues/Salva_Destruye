@@ -21,10 +21,15 @@ let elementButton = document.getElementById("agregarCliente");
 let clientes =[];
 
 /**
- * localStorage 
+ * localStorage.
  */
 let ls_Clientes="clientes";
 let ls_Viajes="viajes";
+/**
+ * Cargar LocalStorage.
+ */
+cargarClientes();
+cargarViajes();
 
 /**
  * CLASES
@@ -136,6 +141,7 @@ function addCliente() {
     let cliente1 = new Cliente(nombre, apellido, email, telefono);
     console.table(cliente1);
     clientes.push(cliente1);
+    guardarClientes();
     madeClientes();
 }
 
@@ -151,6 +157,7 @@ elementButton.addEventListener("click", () => {
  */
 function eliminarCliente(i){
     clientes.splice(i,1);
+    guardarClientes();
     madeClientes();
 }
 
@@ -186,9 +193,11 @@ function addViaje() {
     let codigo = inputCodigo.value.trim();
     let destino = inputDestino.value.trim();
     let precio = inputPrecio.value.trim();
+    
     //creacion de un objeto cliente
     let viaje1 = new Viaje(codigo, destino, precio);
     arrayviajes.push(viaje1);
+    guardarViajes();
     madeViajes();
 }
 /**
@@ -211,6 +220,7 @@ buttonAgregarViaje.addEventListener("click", () => {
 /**
  * Funciones de localStorage.
  */
+//LocalStorage clientes.
 function guardarClientes(){
     localStorage.setItem(ls_Clientes,JSON.stringify(clientes));
 }
@@ -220,4 +230,17 @@ function cargarClientes(){
       clientes = JSON.parse(cargarDatosClientes);
     }
     madeClientes();
+}
+
+//LocalStorage Viajes.
+
+function guardarViajes(){
+    localStorage.setItem(ls_Viajes,JSON.stringify(arrayviajes));
+}
+function cargarViajes(){
+    let cargarDatosViajes = localStorage.getItem(ls_Viajes);
+    if(cargarDatosViajes){
+      arrayviajes = JSON.parse(cargarDatosViajes);
+    }
+    madeViajes();
 }
