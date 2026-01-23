@@ -57,12 +57,58 @@ class Reserva{
 }
 
 let viaje1 = new Viaje("V001", "Roma", 250);
-let cliente1 = new Cliente("jabi","Osuna","estecorreo@gmail.com","336521452");
-let reserva1 = new Reserva(viaje1,cliente1);
-console.log(viaje1.getInfo());
+
+// let reserva1 = new Reserva(viaje1,cliente1);
+// console.log(viaje1.getInfo());
 console.log("Se imprime algo?")
-console.table(cliente1);
-console.table(cliente1.getResumen());
-console.log(reserva1.getResumen());
+// console.table(cliente1);
+// console.table(cliente1.getResumen());
+// console.log(reserva1.getResumen());
 
 
+
+
+
+function addCliente(nombre,apellido,email,telefono){
+    let cliente1 = new Cliente(nombre,apellido,email,telefono);
+    // Cliente.push(cliente1);
+    console.table(cliente1)
+}
+
+addCliente("jabi","Osuna","estecorreo@gmail.com","336521452");
+
+
+
+
+/**
+ * Crear funcion para producir las tablas
+ */
+
+// function tablaCliente() {
+    
+//     /**
+//      * 
+//      */
+//     let tableBody = document.getElementById("madetable");
+//      tableBody.innerHTML = "";
+
+//     cliente1.forEach(cliente,i => {
+//         let row = document.createElement("tr");
+
+//         row.innerHTML = `
+//             <th scope="row">${newClient}</th>
+//             <td>${newClient.getResumen()}</td>
+//             <td>
+//                 <button class="btn btn-warning btn-sm me-2" onclick="editarTarea(${tarea.id})">
+//                     Edit
+//                 </button>
+//                 <button class="btn btn-danger btn-sm">
+//                     Delete
+//                 </button>
+//             </td>
+//         `;
+
+//         tableBody.appendChild(row);
+//     });
+// }
+// tablaCliente();

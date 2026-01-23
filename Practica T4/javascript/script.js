@@ -3,7 +3,7 @@
  * add task in the table
  */
 
-class Tarea {  //Entity
+class Tarea {
 
     /**
      * Start construct
