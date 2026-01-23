@@ -118,6 +118,7 @@ function madeClientes() {
     `;
 
     tablaClientes.appendChild(tr);
+    
   });
 }
 /**
@@ -141,9 +142,9 @@ function addCliente(){
             showCancelButton: true,
             focusConfirm: false,
             confirmButtonText: `
-                <i class="fa fa-thumbs-up"></i> Great!
+                <i class="fa fa-thumbs-up"></i> ¿De acuerdo?!
             `,
-            confirmButtonAriaLabel: "¿De acuerdo?",
+            confirmButtonAriaLabel: "¡¿De acuerdo?!",
             });
             return;
     }
@@ -153,12 +154,19 @@ function addCliente(){
     clientes.push(cliente1);
     guardarClientes();
     madeClientes();
+    
+    Swal.fire({
+    title: "!Cliente guardado!",
+    icon: "success",
+    draggable: true
+    });
     // limpiarInputs();
 } 
 //Función para evitar campos vacios.
 function prohibidoCamposVacios(...vacio){
     return vacio.some(campo => campo ==="");
 }
+
 //Función para limpiar inputs
 // function limpiarInputs(){
 //     inputNombre.value = "";
@@ -166,6 +174,7 @@ function prohibidoCamposVacios(...vacio){
 //     inputEmail.value = "";
 //     inputTelefono.value = "";
 // }
+
 /**
  * Función que agrega viajes
  */
@@ -214,12 +223,36 @@ function addViaje() {
     let codigo = inputCodigo.value.trim();
     let destino = inputDestino.value.trim();
     let precio = inputPrecio.value.trim();
+    if(prohibidoCamposVacios(codigo,destino,precio)){
+        Swal.fire({
+            title: "<strong>Inputs! <u>Vacios!</u></strong>",
+            icon: "info",
+            html: `
+                No puedes dejar <b>espacios</b>
+            `,
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText: `
+                <i class="fa fa-thumbs-up"></i> ¿De acuerdo?!
+            `,
+            confirmButtonAriaLabel: "¡¿De acuerdo?!",
+            });
+            return;
+    }
     
     //creacion de un objeto cliente
     let viaje1 = new Viaje(codigo, destino, precio);
     arrayviajes.push(viaje1);
     guardarViajes();
     madeViajes();
+
+        
+    Swal.fire({
+        title: "!Viaje guardado!",
+        icon: "success",
+        draggable: true
+    });
 }
 
 /**
