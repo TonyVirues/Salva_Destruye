@@ -1,10 +1,11 @@
 //Json?
 let inputNombre = document.getElementById("nombre");
-let inputApellido = document.getElementById("apellido");
+let inputApellido = document.getElementById("apellidos");
 let inputEmail = document.getElementById("email");
 let inputTelefono = document.getElementById("telefono");
 let tablaClientes = document.getElementById("tablaClientes");
 let elementButton = document.getElementById("agregarCliente");
+let eliminarButton = document.getElementById("eliminarCliente");
 let clientes =[];
 
 class Viaje {
@@ -76,20 +77,6 @@ console.log("Se imprime algo?")
 
 
 
-function addCliente() {
-
-    //Variables que guardan los input.
-    let nombre = inputNombre.value;
-    let apellido = inputApellido.value;
-    let email = inputEmail.value;
-    let telefono = inputTelefono.value;
-    //creacion de un objeto cliente
-    let cliente1 = new Cliente(nombre, apellido, email, telefono);
-    console.table(cliente1);
-    clientes.push(cliente1);
-}
-
-
 function madeClientes() {
   tablaClientes.innerHTML = "";
 
@@ -102,7 +89,7 @@ function madeClientes() {
       <td>${cliente.email}</td>
       <td>${cliente.telefono}</td>
       <td>
-        <button class="btn btn-danger btn-sm" onclick="agregarCliente(${i})">
+        <button onclick="eliminarCliente(${i})" class="btn btn-danger btn-sm">
           Eliminar
         </button>
       </td>
@@ -111,3 +98,27 @@ function madeClientes() {
     tablaClientes.appendChild(tr);
   });
 }
+
+function addCliente() {
+
+    //Variables que guardan los input.
+    let nombre = inputNombre.value.trim();
+    let apellido = inputApellido.value.trim();
+    let email = inputEmail.value.trim();
+    let telefono = inputTelefono.value.trim();
+    //creacion de un objeto cliente
+    let cliente1 = new Cliente(nombre, apellido, email, telefono);
+    console.table(cliente1);
+    clientes.push(cliente1);
+    madeClientes();
+}
+function eliminarCliente(i){
+    clientes.splice(i,1);
+    madeClientes();
+}
+
+elementButton.addEventListener("click", () => {
+    
+    addCliente();
+});
+
