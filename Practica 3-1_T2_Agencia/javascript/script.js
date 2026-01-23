@@ -1,4 +1,4 @@
-//Json?
+
 /**
  * Viajes
  */
@@ -215,5 +215,9 @@ function guardarClientes(){
     localStorage.setItem(ls_Clientes,JSON.stringify(clientes));
 }
 function cargarClientes(){
-    let 
+    let cargarDatosClientes = localStorage.getItem(ls_Clientes);
+    if(cargarDatosClientes){
+      clientes = JSON.parse(cargarDatosClientes);
+    }
+    madeClientes();
 }
