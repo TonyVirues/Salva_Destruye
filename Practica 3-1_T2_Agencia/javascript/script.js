@@ -93,15 +93,8 @@ class Reserva {
     }
 }
 
-// let viaje1 = new Viaje("V001", "Roma", 250);
 
-// let reserva1 = new Reserva(viaje1,cliente1);
-// console.log(viaje1.getInfo());
-console.log("Se imprime algo?")
-// console.table(cliente1);
-// console.table(cliente1.getResumen());
-// console.log(reserva1.getResumen());
-
+//<--------------------Clientes--------------------->>>>
 /**
  * Función que crea la tabla para los clientes
  */
@@ -130,21 +123,49 @@ function madeClientes() {
 /**
  * Función que crea los clientes
  */
-function addCliente() {
+function addCliente(){
 
     //Variables que guardan los input.
     let nombre = inputNombre.value.trim();
     let apellido = inputApellido.value.trim();
     let email = inputEmail.value.trim();
     let telefono = inputTelefono.value.trim();
+    if(prohibidoCamposVacios(nombre,apellido,email,telefono)){
+        Swal.fire({
+            title: "<strong>Inputs! <u>Vacios!</u></strong>",
+            icon: "info",
+            html: `
+                No puedes dejar <b>espacios</b>
+            `,
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText: `
+                <i class="fa fa-thumbs-up"></i> Great!
+            `,
+            confirmButtonAriaLabel: "¿De acuerdo?",
+            });
+            return;
+    }
     //creacion de un objeto cliente
     let cliente1 = new Cliente(nombre, apellido, email, telefono);
     console.table(cliente1);
     clientes.push(cliente1);
     guardarClientes();
     madeClientes();
+    // limpiarInputs();
+} 
+//Función para evitar campos vacios.
+function prohibidoCamposVacios(...vacio){
+    return vacio.some(campo => campo ==="");
 }
-
+//Función para limpiar inputs
+// function limpiarInputs(){
+//     inputNombre.value = "";
+//     inputApellido.value = "";
+//     inputEmail.value = "";
+//     inputTelefono.value = "";
+// }
 /**
  * Función que agrega viajes
  */
@@ -163,7 +184,7 @@ function eliminarCliente(i){
 
 
 /**
- * VIAJES
+ * <---------VIAJES------------------>
  */
 
 function madeViajes() {
@@ -200,6 +221,7 @@ function addViaje() {
     guardarViajes();
     madeViajes();
 }
+
 /**
  * Función para eliminar la celda fila seleccionada.
  * 
