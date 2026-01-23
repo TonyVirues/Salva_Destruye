@@ -4,6 +4,7 @@ let inputApellido = document.getElementById("apellido");
 let inputEmail = document.getElementById("email");
 let inputTelefono = document.getElementById("telefono");
 let tablaClientes = document.getElementById("tablaClientes");
+let elementButton = document.getElementById("agregarCliente");
 let clientes =[];
 
 class Viaje {
@@ -75,12 +76,17 @@ console.log("Se imprime algo?")
 
 
 
-function addCliente(nombre, apellido, email, telefono) {
+function addCliente() {
+
+    //Variables que guardan los input.
+    let nombre = inputNombre.value;
+    let apellido = inputApellido.value;
+    let email = inputEmail.value;
+    let telefono = inputTelefono.value;
+    //creacion de un objeto cliente
     let cliente1 = new Cliente(nombre, apellido, email, telefono);
-    // Cliente.push(cliente1);
     console.table(cliente1);
     clientes.push(cliente1);
-    madeClientes();
 }
 
 
@@ -96,7 +102,7 @@ function madeClientes() {
       <td>${cliente.email}</td>
       <td>${cliente.telefono}</td>
       <td>
-        <button class="btn btn-danger btn-sm" onclick="eliminarCliente(${i})">
+        <button class="btn btn-danger btn-sm" onclick="agregarCliente(${i})">
           Eliminar
         </button>
       </td>
@@ -105,4 +111,3 @@ function madeClientes() {
     tablaClientes.appendChild(tr);
   });
 }
-addCliente("Julia", "pelotuda", "ranitoalhabla@gmail.com", "336521452");
