@@ -1,5 +1,13 @@
-class Viaje{
+//Json?
+let inputNombre = document.getElementById("nombre");
+let inputApellido = document.getElementById("apellido");
+let inputEmail = document.getElementById("email");
+let inputTelefono = document.getElementById("telefono");
+let tablaCliente = document.getElementById("tablaClientes");
 
+
+class Viaje {
+    
     /**
      * 
      * @param {*} codigo 
@@ -8,15 +16,15 @@ class Viaje{
      * @param {*} disponibilidad 
      */
     constructor(codigo, destino, precio, disponibilidad = true) {
-    this.codigo = codigo;
-    this.destino = destino;
-    this.precio = precio;
-    this.disponibilidad = disponibilidad;
+        this.codigo = codigo;
+        this.destino = destino;
+        this.precio = precio;
+        this.disponibilidad = disponibilidad;
     }
     getInfo() {
-    return `Viaje [${this.codigo}] a ${this.destino}, precio: ${this.precio} euros`;
+        return `Viaje [${this.codigo}] a ${this.destino}, precio: ${this.precio} euros`;
     }
- 
+
 }
 
 
@@ -30,17 +38,17 @@ class Cliente {
      * @param {*} telefono 
      */
     constructor(nombre, apellido, email, telefono) {
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.email = email;
-    this.telefono = telefono;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
     }
     getResumen() {
-    return `Cliente: ${this.nombre} ${this.apellido}, Email: ${this.email}, Teléfono: ${this.telefono}`;
+        return `Cliente: ${this.nombre} ${this.apellido}, Email: ${this.email}, Teléfono: ${this.telefono}`;
     }
 
 }
-class Reserva{
+class Reserva {
 
     /**
      * 
@@ -48,15 +56,15 @@ class Reserva{
      * @param {*} viaje 
      */
     constructor(cliente, viaje) {
-    this.cliente = cliente;
-    this.viaje = viaje;
+        this.cliente = cliente;
+        this.viaje = viaje;
     }
     getResumen() {
-    return `${this.cliente.getResumen()}\nReservó: ${this.viaje.getInfo()}`;
+        return `${this.cliente.getResumen()}\nReservó: ${this.viaje.getInfo()}`;
     }
 }
 
-let viaje1 = new Viaje("V001", "Roma", 250);
+// let viaje1 = new Viaje("V001", "Roma", 250);
 
 // let reserva1 = new Reserva(viaje1,cliente1);
 // console.log(viaje1.getInfo());
@@ -67,15 +75,14 @@ console.log("Se imprime algo?")
 
 
 
-
-
-function addCliente(nombre,apellido,email,telefono){
-    let cliente1 = new Cliente(nombre,apellido,email,telefono);
+function addCliente(nombre, apellido, email, telefono) {
+    let cliente1 = new Cliente(nombre, apellido, email, telefono);
     // Cliente.push(cliente1);
     console.table(cliente1)
 }
 
-addCliente("jabi","Osuna","estecorreo@gmail.com","336521452");
+addCliente("jabi", "Osuna", "estecorreo@gmail.com", "336521452");
+
 
 
 
@@ -85,7 +92,7 @@ addCliente("jabi","Osuna","estecorreo@gmail.com","336521452");
  */
 
 // function tablaCliente() {
-    
+
 //     /**
 //      * 
 //      */
@@ -112,3 +119,56 @@ addCliente("jabi","Osuna","estecorreo@gmail.com","336521452");
 //     });
 // }
 // tablaCliente();
+// const clienteInscrito = new Cliente();
+// function renderTareas() {
+
+//     /**
+//      * 
+//      */
+//     let tableBody = document.getElementById("tablaCliente");
+//     tableBody.innerHTML = "";
+
+//     let clientes = clienteInscrito.getResumen();
+
+//     clientes.forEach((c, i) => {
+//         let row = document.createElement("tr");
+
+//         row.innerHTML = `
+//             <td>${c.nombre}</td>
+//             <td>
+//                 <button class="btn btn-warning btn-sm me-2" onclick="editarTarea(${tarea.id})">
+//                     Edit
+//                 </button>
+//                 <button class="btn btn-danger btn-sm">
+//                     Delete
+//                 </button>
+//             </td>
+//         `;
+
+//         tableBody.appendChild(row);
+//     });
+// }
+// renderTareas();
+// let tablaClientes = document.getElementById("tablaClientes");
+// function pintarClientes() {
+//     tablaClientes.innerHTML = "";
+//     clientes= new Cliente("lito","pellido","autista@gmail.com","336524415")
+//     clientes.forEach((cliente, index) => {
+//         const tr = document.createElement("tr");
+
+//         tr.innerHTML = `
+//       <td>${cliente.nombre}</td>
+//     //   <td>${cliente.apellido}</td>
+//     //   <td>${cliente.email}</td>
+//     //   <td>${cliente.telefono}</td>
+//       <td>
+//         <button class="btn btn-danger btn-sm" onclick="eliminarCliente(${index})">
+//           Eliminar
+//         </button>
+//       </td>
+//     `;
+
+//         tablaClientes.appendChild(tr);
+//     });
+// }
+// pintarClientes();
