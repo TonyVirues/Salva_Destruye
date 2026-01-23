@@ -1,12 +1,34 @@
 //Json?
+/**
+ * Viajes
+ */
+let inputCodigo = document.getElementById("codigo");
+let inputDestino = document.getElementById("destino");
+let inputPrecio = document.getElementById("precio");
+let selectorTipoViaje = document.getElementById("selectorTipoViaje");
+let tablaViajes = document.getElementById("tablaViajes");
+let buttonAgregarViaje = document.getElementById("agregarViaje");
+let arrayviajes=[];
+/**
+ * Clientes
+ */
 let inputNombre = document.getElementById("nombre");
 let inputApellido = document.getElementById("apellidos");
 let inputEmail = document.getElementById("email");
 let inputTelefono = document.getElementById("telefono");
 let tablaClientes = document.getElementById("tablaClientes");
 let elementButton = document.getElementById("agregarCliente");
-let eliminarButton = document.getElementById("eliminarCliente");
 let clientes =[];
+
+/**
+ * localStorage 
+ */
+let ls_Clientes="clientes";
+let ls_Viajes="viajes";
+
+/**
+ * CLASES
+ */
 
 class Viaje {
     
@@ -75,7 +97,9 @@ console.log("Se imprime algo?")
 // console.table(cliente1.getResumen());
 // console.log(reserva1.getResumen());
 
-
+/**
+ * Función que crea la tabla para los clientes
+ */
 
 function madeClientes() {
   tablaClientes.innerHTML = "";
@@ -98,7 +122,9 @@ function madeClientes() {
     tablaClientes.appendChild(tr);
   });
 }
-
+/**
+ * Función que crea los clientes
+ */
 function addCliente() {
 
     //Variables que guardan los input.
@@ -112,13 +138,82 @@ function addCliente() {
     clientes.push(cliente1);
     madeClientes();
 }
+
+/**
+ * Función que agrega viajes
+ */
+elementButton.addEventListener("click", () => {
+    addCliente();
+});
+/**
+ * Boton que elimina la fila.
+ * @param {*} i 
+ */
 function eliminarCliente(i){
     clientes.splice(i,1);
     madeClientes();
 }
 
-elementButton.addEventListener("click", () => {
-    
-    addCliente();
+
+/**
+ * VIAJES
+ */
+
+function madeViajes() {
+  tablaViajes.innerHTML = "";
+
+  arrayviajes.forEach((viaje, i) => {
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td>${viaje.codigo}</td>
+      <td>${viaje.destino}</td>
+      <td>${viaje.precio}</td>
+      <td>
+        <button onclick="eliminarViaje(${i})" class="btn btn-danger btn-sm">
+          Eliminar
+        </button>
+      </td>
+    `;
+
+    tablaViajes.appendChild(tr);
+  });
+}
+
+function addViaje() {
+
+    //Variables que guardan los input.
+    let codigo = inputCodigo.value.trim();
+    let destino = inputDestino.value.trim();
+    let precio = inputPrecio.value.trim();
+    //creacion de un objeto cliente
+    let viaje1 = new Viaje(codigo, destino, precio);
+    arrayviajes.push(viaje1);
+    madeViajes();
+}
+/**
+ * Función para eliminar la celda fila seleccionada.
+ * 
+ * @param {*} i 
+ */
+function eliminarViaje(i){
+    arrayviajes.splice(i,1);
+    madeViajes();
+}
+
+/**
+ * boton que agrega cliente
+ */
+buttonAgregarViaje.addEventListener("click", () => {
+    addViaje();
 });
 
+/**
+ * Funciones de localStorage.
+ */
+function guardarClientes(){
+    localStorage.setItem(ls_Clientes,JSON.stringify(clientes));
+}
+function cargarClientes(){
+    let 
+}

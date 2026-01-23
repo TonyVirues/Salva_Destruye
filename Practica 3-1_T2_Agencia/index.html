@@ -57,20 +57,7 @@
                 
                 <!--Body table-->
                 <tbody id ="tablaClientes">
-                    <!-- <tr>
-                        <th>Amalia</th>
-                        <th>zzzz</th>
-                        <th>nomeacuerdo@hotmail.com</th>
-                        <th>dice que perdio la contraseña</th>
-                        <th><button class="btn btn-danger btn-sm">Delete</button></th>
-                    </tr>
-                    <tr>
-                        <th>Thel</th>
-                        <th>Del fuego</th>
-                        <th>chamancita@gmail.com</th>
-                        <th>*********</th>
-                        <th><button class="btn btn-danger btn-sm">Delete</button></th>
-                    </tr> -->
+                    <!--Javascript genera la tabla-->
                 </tbody>
             </table>
         </div>
@@ -85,27 +72,37 @@
                 <div class="row g-3 align-items-center">
                     <!--1 input-->
                     <div class="col-auto">
-                        <input type="text" class="form-control "placeholder="Código">
+                        <input id="codigo" type="text" class="form-control "placeholder="Código">
                     </div>
                     <!--2 input-->
                     <div class="col-auto">
-                        <input type="text" class="form-control"placeholder="Destino">
+                        <input id="destino" type="text" class="form-control"placeholder="Destino">
                     </div>
                     <!--3 input-->
                     <div class="col-auto">
                         <div class="col-auto">
-                            <input type="text" class="form-control"placeholder="Precio">
+                            <input id="precio" type="text" class="form-control"placeholder="Precio">
+                        </div>
+                    </div>
+                    <!--Selector-->
+                    <div class="col-auto">
+                        <div class="selector">
+                            <select id="cantidadSelector" class="form-select">
+                                <option selected>Tipo viaje</option>
+                                <option value="largo">largo</option>
+                                <option value="corto">Corto</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-dark">Base class</button>
+                        <button id="agregarViaje" type="button" class="btn btn-dark">Agregar viaje</button>
                     </div>
                 </div>
             </form>
             <!--Inicio de tablet-->
             <table class="table table-bordered border-primary table-striped table-dark text-center mt-4">
                 <!--Head table-->
-                <thead>
+                <thead id ="tablaViajes">
                     <tr>
                         <th scope="col">Código</th>
                         <th scope="col">Destino</th>
@@ -115,19 +112,8 @@
                 </thead>
                 
                 <!--Body table-->
-                <tbody id ="tablaImagen">
-                    <tr>
-                        <th>Amalia</th>
-                        <th>zzzz</th>
-                        <th>nomeacuerdo@hotmail.com</th>
-                        <th><button class="btn btn-danger btn-sm">Delete</button></th>
-                    </tr>
-                    <tr>
-                        <th>Thel</th>
-                        <th>Del fuego</th>
-                        <th>chamancita@gmail.com</th>
-                        <th><button class="btn btn-danger btn-sm">Delete</button></th>
-                    </tr>
+                <tbody id ="tablaviajes">
+                    <!--Javascrip genera la tabla-->
                 </tbody>
             </table>
         </div>
