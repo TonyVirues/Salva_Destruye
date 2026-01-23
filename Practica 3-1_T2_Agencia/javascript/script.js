@@ -3,8 +3,8 @@ let inputNombre = document.getElementById("nombre");
 let inputApellido = document.getElementById("apellido");
 let inputEmail = document.getElementById("email");
 let inputTelefono = document.getElementById("telefono");
-let tablaCliente = document.getElementById("tablaClientes");
-
+let tablaClientes = document.getElementById("tablaClientes");
+let clientes =[];
 
 class Viaje {
     
@@ -78,97 +78,31 @@ console.log("Se imprime algo?")
 function addCliente(nombre, apellido, email, telefono) {
     let cliente1 = new Cliente(nombre, apellido, email, telefono);
     // Cliente.push(cliente1);
-    console.table(cliente1)
+    console.table(cliente1);
+    clientes.push(cliente1);
+    madeClientes();
 }
 
-addCliente("jabi", "Osuna", "estecorreo@gmail.com", "336521452");
 
+function madeClientes() {
+  tablaClientes.innerHTML = "";
 
+  clientes.forEach((cliente, i) => {
+    const tr = document.createElement("tr");
 
+    tr.innerHTML = `
+      <td>${cliente.nombre}</td>
+      <td>${cliente.apellido}</td>
+      <td>${cliente.email}</td>
+      <td>${cliente.telefono}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" onclick="eliminarCliente(${i})">
+          Eliminar
+        </button>
+      </td>
+    `;
 
-
-/**
- * Crear funcion para producir las tablas
- */
-
-// function tablaCliente() {
-
-//     /**
-//      * 
-//      */
-//     let tableBody = document.getElementById("madetable");
-//      tableBody.innerHTML = "";
-
-//     cliente1.forEach(cliente,i => {
-//         let row = document.createElement("tr");
-
-//         row.innerHTML = `
-//             <th scope="row">${newClient}</th>
-//             <td>${newClient.getResumen()}</td>
-//             <td>
-//                 <button class="btn btn-warning btn-sm me-2" onclick="editarTarea(${tarea.id})">
-//                     Edit
-//                 </button>
-//                 <button class="btn btn-danger btn-sm">
-//                     Delete
-//                 </button>
-//             </td>
-//         `;
-
-//         tableBody.appendChild(row);
-//     });
-// }
-// tablaCliente();
-// const clienteInscrito = new Cliente();
-// function renderTareas() {
-
-//     /**
-//      * 
-//      */
-//     let tableBody = document.getElementById("tablaCliente");
-//     tableBody.innerHTML = "";
-
-//     let clientes = clienteInscrito.getResumen();
-
-//     clientes.forEach((c, i) => {
-//         let row = document.createElement("tr");
-
-//         row.innerHTML = `
-//             <td>${c.nombre}</td>
-//             <td>
-//                 <button class="btn btn-warning btn-sm me-2" onclick="editarTarea(${tarea.id})">
-//                     Edit
-//                 </button>
-//                 <button class="btn btn-danger btn-sm">
-//                     Delete
-//                 </button>
-//             </td>
-//         `;
-
-//         tableBody.appendChild(row);
-//     });
-// }
-// renderTareas();
-// let tablaClientes = document.getElementById("tablaClientes");
-// function pintarClientes() {
-//     tablaClientes.innerHTML = "";
-//     clientes= new Cliente("lito","pellido","autista@gmail.com","336524415")
-//     clientes.forEach((cliente, index) => {
-//         const tr = document.createElement("tr");
-
-//         tr.innerHTML = `
-//       <td>${cliente.nombre}</td>
-//     //   <td>${cliente.apellido}</td>
-//     //   <td>${cliente.email}</td>
-//     //   <td>${cliente.telefono}</td>
-//       <td>
-//         <button class="btn btn-danger btn-sm" onclick="eliminarCliente(${index})">
-//           Eliminar
-//         </button>
-//       </td>
-//     `;
-
-//         tablaClientes.appendChild(tr);
-//     });
-// }
-// pintarClientes();
+    tablaClientes.appendChild(tr);
+  });
+}
+addCliente("Julia", "pelotuda", "ranitoalhabla@gmail.com", "336521452");
