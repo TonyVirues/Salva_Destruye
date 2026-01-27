@@ -3,21 +3,8 @@ $(document).ready(function() {
     let $inputTarea = $("#inputAñadir");
     let $tbody = $("#tablaTarea");
     let tareasAñadidas =[];//array.
-    
 
-    //Función que añade una nueva tarea.
-    $("#botonAñadir").on("click", function () {
-        let texto = $inputTarea.val().trim();
-        if (texto === "") return;
-
-        tareasAñadidas.push({
-            texto: texto,
-            completada: false
-        });
-
-        $inputTarea.val("");
-        madeTarea();
-    });
+    let filtrarTareas = "todas";
 
     //Función que dibuja la tarea en fila.
     function madeTarea() {
@@ -89,7 +76,24 @@ $(document).ready(function() {
     let i = $(this).data("index");
     tareasAñadidas.splice(i, 1);
     madeTarea();
-});
+    });
+
+    //Acción para filtrar la lista por botones.
+    $("#filtroTodas").on("click", function () {
+        filtroActual = "todas";
+        madeTarea();
+    });
+
+    $("#filtroCompletadas").on("click", function () {
+        filtroActual = "completadas";
+        madeTarea();
+    });
+
+    $("#filtroPendientes").on("click", function () {
+        filtroActual = "pendientes";
+        madeTarea();
+    });
+
 
 //Fin del JQuery.
 });
