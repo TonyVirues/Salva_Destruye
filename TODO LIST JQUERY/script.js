@@ -4,12 +4,19 @@ $(document).ready(function() {
     let $tbody = $("#tablaTarea");
     let tareasAñadidas =[];//array.
 
-    let filtrarTareas = "todas";
+    let filtroActual = "todas";
 
     //Función que dibuja la tarea en fila.
     function madeTarea() {
         $tbody.empty();
-        tareasAñadidas.forEach((tarea, i) => {
+        let tareasfiltradas = tareasAñadidas.filter(tarea=>{
+            if(filtroActual === "completadas") return tarea.completada;
+            if(filtroActual === "pendientes") return !tarea.completada;
+            return true; //Return para ver todas las tareas
+        } )
+
+
+        tareasfiltradas.forEach((tarea, i) => {
             let estilo = tarea.completada ? "text-decoration: line-through; color:#aaa" : "";
 
             let fila = `
