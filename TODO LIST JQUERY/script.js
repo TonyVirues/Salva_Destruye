@@ -68,6 +68,15 @@ $(document).ready(function() {
         madeTarea();
     });
 
+
+    //Permite agregar tarea presionando "enter".
+    $("#inputAñadir").on("keypress", function(e) {
+        if (e.which === 13) { //Número 13 es el código de la tecla enter.
+            e.preventDefault();
+            $("#botonAñadir").click();
+        }
+    });
+
     //Botón que completa una tarea.
     $tbody.on("click", ".btn-completar", function () {
         let i = $(this).data("index");
@@ -75,8 +84,13 @@ $(document).ready(function() {
         madeTarea();
     });
 
+    //Botón que elimina tarea.
+    $tbody.on("click", ".btn-eliminar", function () {
+    let i = $(this).data("index");
+    tareasAñadidas.splice(i, 1);
+    madeTarea();
+});
 
-
-//fin del JQuery
+//Fin del JQuery.
 });
 
