@@ -44,6 +44,24 @@ $(document).ready(function() {
             $tbody.append(fila);
         });    
     };
+    //Función para guardar el localStorage
+    function guardarLocalStorage() {
+    localStorage.setItem("tareasAñadidas", JSON.stringify(tareasAñadidas));
+    }
+
+    //Función que cambia el color de los botones al filtrar.
+    function actualizarBotones(botonActivo){
+        $("#filtroTodas, #filtroCompletadas, #filtroPendientes")
+        .removeClass("btn-info").addClass("btn-dark");
+
+        $(botonActivo).removeClass("btn-dark").addClass("btn-info");
+    }
+    
+    //Comparación que permite cargar el localstorage
+    if (localStorage.getItem("tareasAñadidas")) {
+    tareasAñadidas = JSON.parse(localStorage.getItem("tareasAñadidas"));
+    madeTarea();
+    }
     /**
      * FUNCIONALIDAD BOTONES--->
      */
@@ -59,6 +77,7 @@ $(document).ready(function() {
         });
 
         $inputTarea.val("");
+        guardarLocalStorage();
         madeTarea();
     });
 
@@ -75,6 +94,7 @@ $(document).ready(function() {
     $tbody.on("click", ".btn-completar", function () {
         let i = $(this).data("index");
         tareasAñadidas[i].completada = !tareasAñadidas[i].completada;
+        guardarLocalStorage();
         madeTarea();
     });
 
@@ -82,22 +102,43 @@ $(document).ready(function() {
     $tbody.on("click", ".btn-eliminar", function () {
     let i = $(this).data("index");
     tareasAñadidas.splice(i, 1);
+    guardarLocalStorage();
     madeTarea();
     });
+
+    //Botón editar tarea.
+    $tbody.on("click",".btn-editar",function(){
+        let i = $(this).data("index");
+
+        let textoActual = tareasAñadidas[i].texto;
+
+        let nuevoTexto = prompt("Edita la tarea: ", textoActual);
+
+        if(nuevoTexto === null)return;
+        if(nuevoTexto.trim()==="")return;
+
+        tareasAñadidas[i].texto = nuevoTexto.trim();
+        guardarLocalStorage();
+        madeTarea();
+
+    })
 
     //Acción para filtrar la lista por botones.
     $("#filtroTodas").on("click", function () {
         filtroActual = "todas";
+        actualizarBotones(this);
         madeTarea();
     });
 
     $("#filtroCompletadas").on("click", function () {
         filtroActual = "completadas";
+        actualizarBotones(this);
         madeTarea();
     });
 
     $("#filtroPendientes").on("click", function () {
         filtroActual = "pendientes";
+        actualizarBotones(this);
         madeTarea();
     });
 
