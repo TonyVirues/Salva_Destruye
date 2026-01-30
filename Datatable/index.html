@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+        <script  src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.6/css/dataTables.dataTables.css" />
+
+    <title>Document</title>
+</head>
+<body>
+    <h2>Datatable</h2>
+    <div id="customForm">
+        <fieldset class="name">
+            <legend>Name</legend>
+            <editor-field name="first_name"></editor-field>
+            <editor-field name="last_name"></editor-field>
+        </fieldset>
+        <fieldset class="office">
+            <legend>Office</legend>
+            <editor-field name="office"></editor-field>
+            <editor-field name="extn"></editor-field>
+        </fieldset>
+        <fieldset class="hr">
+            <legend>HR info</legend>
+            <editor-field name="position"></editor-field>
+            <editor-field name="salary"></editor-field>
+            <editor-field name="start_date"></editor-field>
+        </fieldset>
+    </div>
+<table id="example" class="display">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011-04-25</td>
+                <td>$320,800</td>
+            </tr>
+
+
+
+        </tbody>
+
+    </table>
+    <script src="script.js"></script>
+    <script src="https://cdn.datatables.net/2.3.6/js/dataTables.js"></script>
+
+</body>
+</html>
