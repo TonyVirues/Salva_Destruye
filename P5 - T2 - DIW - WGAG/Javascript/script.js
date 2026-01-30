@@ -50,10 +50,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Escuchar si el usuario cambia el tema en Windows/Mac mientras navega
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) { // Solo si el usuario no ha elegido manualmente
-            applyTheme(e.matches ? 'dark' : 'light');
-        }
-    });
 });
