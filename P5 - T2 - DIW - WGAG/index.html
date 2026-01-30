@@ -12,12 +12,12 @@
 <body class="">
     <header>
         <!--Título de bienvenida.-->
-        <h1 class="text-center text-white mb-4 mt-4">Bienvenido</h1>
+        <h1 class="text-center mb-4 mt-4">Bienvenido</h1>
         <div>
             <!--Botón para cambiar el tema y tamaño del texto.-->
         </div>
         <!--Menú de navegación.-->
-        <nav class="navbar container  navbar-expand-lg rounded-3 bg-primary">
+        <nav class="navbar container   rounded-3 bg-primary">
             <div class="container">
                 <a class="navbar-brand" href="#"><img src="Image/images.jpg" alt="Desdentado" width="30" height="24"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,16 +26,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Clicks</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="#">Cambiar</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <a class="nav-link disabled" aria-disabled="true">Información de contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -44,17 +44,19 @@
     </header>
 
     <main>
-        <div class="container">
-            <!--Sección con texto y botón que cambien el fondo.-->
-            <!--Botón que cambia el fondo.-->
-            <!-- From Uiverse.io by Madflows --> 
+        <div class="container mt-4">
+            <div class="row">
+                <!--Sección con texto y botón que cambien el fondo.-->
+                <!--Botón que cambia el fondo.-->
+                <label class="ui-switch col-1">
+                    <input type="checkbox" id="darkModeToggle">
+                    <div class="slider">
+                        <div class="circle"></div>
+                    </div>
+                </label>
+                <div class="col-4"><a>Cambiar de color de fondo.</a></div>
 
-            <label class="ui-switch">
-                <input type="checkbox" id="darkModeToggle">
-                <div class="slider">
-                    <div class="circle"></div>
-                </div>
-            </label>
+            </div>
 
         </div>
         <div>
