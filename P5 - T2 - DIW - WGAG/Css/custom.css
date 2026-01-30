@@ -3,7 +3,7 @@
 /**
 * Botón cambiar color de fondo.
 */
-.toggle-switch {
+/* .toggle-switch {
   position: relative;
   width: 100px;
   height: 50px;
@@ -63,4 +63,58 @@
   background-color: var(--dark);
   -webkit-box-shadow: none;
   box-shadow: none;
+} */
+/* Transición suave para toda la página */
+body {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Diseño del switch (Inspirado en Uiverse) */
+.ui-switch {
+  --circle-dim: 1.4em;
+  --container-width: 3.5em;
+  --container-height: 2em;
+  --container-light: #ebebeb;
+  --container-dark: #2b2b2b;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.ui-switch input {
+  display: none;
+}
+
+.ui-switch .slider {
+  width: var(--container-width);
+  height: var(--container-height);
+  background-color: var(--container-light);
+  border-radius: 50px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #ccc;
+}
+
+.ui-switch .circle {
+  width: var(--circle-dim);
+  height: var(--circle-dim);
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0.3em;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Cuando el modo oscuro está activo (checkbox marcado) */
+.ui-switch input:checked + .slider {
+  background-color: var(--container-dark);
+  border-color: #444;
+}
+
+.ui-switch input:checked + .slider .circle {
+  left: calc(100% - var(--circle-dim) - 0.3em);
+  background-color: #f5f5f5;
+  box-shadow: inset -3px -2px 5px -2px #8983f7, 0 2px 5px rgba(0,0,0,0.2);
 }
