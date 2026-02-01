@@ -6,8 +6,11 @@ let btnColor = document.getElementById("btn-colorRandom");
 let btnUp = document.getElementById("btnArriba");
 let barProgeso = document.getElementById("barProgreso");
 let mensajeHora = document.getElementById("saludarHora");
+let selecTipo =  document.getElementById("selectorTipografia");
+let selecTama =  document.getElementById("selectorTamaño");
 //Variable que guarda los clicks.
 let clicks = 0;
+let cuerpoP = document.body;
 
 /**
  * FUNCIONES------>
@@ -94,21 +97,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let toggle = document.getElementById('darkModeToggle');
     let htmlElement = document.documentElement;
 
-    // Función para aplicar el tema
+    // Función para aplicar el tema.
     let applyTheme = (theme) => {
         htmlElement.setAttribute('data-bs-theme', theme);
         localStorage.setItem('theme', theme);
         if (toggle) toggle.checked = (theme === 'dark');
     };
 
-    // 1. Detectar tema inicial
+    // 1. Detectar tema inicial.
     let savedTheme = localStorage.getItem('theme');
     let systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     
-    // Aplicamos el guardado o el del sistema
+    // Aplicamos el guardado o el del sistema.
     applyTheme(savedTheme || systemTheme);
 
-    // 2. Escuchar el click del usuario
+    // 2. Escuchar el click del usuario.
     if (toggle) {
         toggle.addEventListener('change', () => {
             let newTheme = toggle.checked ? 'dark' : 'light';
