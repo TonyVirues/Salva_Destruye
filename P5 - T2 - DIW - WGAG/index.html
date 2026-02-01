@@ -1,41 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Links.-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="Css/custom.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="Css/custom.css" />
     <title>Página interactiva</title>
 </head>
 
 <body class="">
     <header>
-        <!--Título de bienvenida.-->
-        <h1 class="text-center mb-4 mt-4">Bienvenido</h1>
-        <div>
-            <!--Botón para cambiar el tema y tamaño del texto.-->
+        <!--Barra de progreso.-->
+        <div id="barContenedor">
+            <div id="barProgreso"></div>
         </div>
+
+        <!--Título de bienvenida.-->
+        <h1 id="titulo" class="container text-center mb-4 mt-4">Bienvenido</h1>
+        <div class="container text-center">
+            <p id="saludarHora"></p>
+        </div>
+
+        <!--Botón para cambiar el tema y tamaño del texto.-->
+        <div class="container">
+            <form class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <select class="form-select form-select-lg mb-3">
+                        <option selected>Tipografía de letra.</option>
+                        <option value="1">valor</option>
+                        <option value="2">datos</option>
+                        <option value="3">valor</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select form-select-lg mb-3">
+                        <option selected>Tamaño de letra.</option>
+                        <option value="1">valor</option>
+                        <option value="2">datos</option>
+                        <option value="3">valor</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
         <!--Menú de navegación.-->
         <nav class="navbar container   rounded-3 bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="Image/images.jpg" alt="Desdentado" width="30" height="24"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="#"><img src="Image/images.jpg" alt="Desdentado" width="30"
+                        height="24"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span> <!--Revisar.-->
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Clicks</a>
+                            <a class="nav-link" href="#">Clicks</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">Cambiar</a>
+                            <a class="nav-link" href="#">Cambiar</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Información de contacto</a>
+                            <a class="nav-link disabled" aria-disabled="true">Información de contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -59,12 +91,48 @@
             </div>
 
         </div>
-        <div>
-            <!--Contador de clics.-->
-            
+
+        <!--Contador de clics.-->
+        <div class="container mt-5">
+            <button id="btn-click" type="button">Pulsame! y cuenta conmigo</button>
+            <p id="num-clicks">El contador se encuentra en: 0</p>
         </div>
-        <div>
-            <!--Botón de ir arriba.-->
+
+        <!--Cambiar de color una sección.-->
+        <div class="container mt-5">
+            <button id="btn-colorRandom" type="button" class="btn btn-info">Cambiemos de color!</button>
+        </div>
+        <div class="container text-center">
+            <h2>Lau es la mejor del mundo</h2>
+            <h6>o eso dice ella</h6>
+        </div>
+        
+        <!--RELLENO-->
+        <div class="container text-center">
+            <img src="Image/037be814f4e3ffe5c5a9807d2119c4cd.jpg" alt="Desdentado">
+        </div>
+
+        <!--Botón de ir arriba.-->
+        <div class="fixed-bottom  mb-3 me-3 text-end">
+            <button id="btnArriba" type="button" class="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-arrow-bar-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5m-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5" />
+                </svg>
+                <a href="#" class="btn btn-primary rounded-circle shadow-lg">Púlsame para regresar arriba</a>
+            </button>
+        </div>
+
+
+
+
+
+
+
+                <!--RELLENO-->
+        <div class="container text-center">
+            <img src="Image/Treecko esperando.jpg" alt="Desdentado">
         </div>
     </main>
 
@@ -73,8 +141,10 @@
     </footer>
     <!--Javascript.-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
     <script src="Javascript/script.js"></script>
 </body>
+
 </html>
