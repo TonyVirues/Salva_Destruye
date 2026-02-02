@@ -65,8 +65,25 @@
   box-shadow: none;
 } */
 /* Transición suave para toda la página */
+:root {
+  --tipografia-versatil: 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Aplicamos a todos los elementos para ganar a Bootstrap */
+* {
+    font-family: var(--tipografia-versatil) !important;
+}
+
 body {
     transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+:root {
+  --tipografia-versatil: 'Segoe UI', Verdana ,Geneva, Tahoma, sans-serif;
+}
+body {
+    transition: background-color 0.4s ease, color 0.4s ease;
+    font-family: var(--tipografia-versatil) !important;
 }
 
 /* Barra de progreso */

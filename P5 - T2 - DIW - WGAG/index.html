@@ -12,7 +12,7 @@
     <title>Página interactiva</title>
 </head>
 
-<body class="">
+<body id="fondo">
     <header>
         <!--Barra de progreso.-->
         <div id="barContenedor">
@@ -31,17 +31,17 @@
                 <div class="col-4">
                     <select class="form-select form-select-lg mb-3">
                         <option selected>Tipografía de letra.</option>
-                        <option value="1">valor</option>
-                        <option value="2">datos</option>
-                        <option value="3">valor</option>
+                        <option value="courier">Courier</option>
+                        <option value="verdana">Verdana</option>
+                        <option value="impact">Impact</option>
                     </select>
                 </div>
                 <div class="col-4">
                     <select id="selectorTamaño" class="form-select form-select-lg mb-3">
                         <option selected>Tamaño de letra.</option>
-                        <option value="1">valor</option>
-                        <option value="2">datos</option>
-                        <option value="3">valor</option>
+                        <option value="pequeño">Pequeño</option>
+                        <option value="mediano">Mediano</option>
+                        <option value="grande">Grande</option>
                     </select>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
@@ -92,7 +92,6 @@
                     </div>
                 </label>
                 <div class="col-4"><a>Cambiar de color de fondo.</a></div>
-
             </div>
 
         </div>
@@ -103,10 +102,20 @@
             <p id="num-clicks">El contador se encuentra en: 0</p>
         </div>
 
-        <!--Cambiar de color una sección.-->
-        <div class="container mt-5">
-            <button id="btn-colorRandom" type="button" class="btn btn-info">Cambiemos de color!</button>
+        <!--Contenedor de botones para cambiar el color.-->
+        <div class="row mt-5 mb-5">
+            <!--Cambiar de color una sección de forma aleatoria.-->
+            <div class="container col-auto">
+                <button id="btn-colorSeccionRandom" type="button" class="btn btn-info">Cambiemos de color de una sección!</button>
+            </div>
+            <!--Botón que cambia el fondo de forma aleatoria-->
+            <div class="container col-auto">
+                <button id="btn-colorFondoRandom" type="button" class="btn btn-success">Cambiemos de color de fondo!</button>
+            </div>
+
         </div>
+
+        <!--Relleno-->
         <div class="container text-center">
             <h2>Lau es la mejor del mundo</h2>
             <h6>o eso dice ella</h6>

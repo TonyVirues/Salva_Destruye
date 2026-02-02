@@ -2,7 +2,9 @@
 let btnClick = document.getElementById("btn-click");
 let numClicks = document.getElementById("num-clicks");
 let colorSeccion = document.getElementById("titulo");
-let btnColor = document.getElementById("btn-colorRandom");
+// let changeBackground = document.getElementById("fondo");
+let btnColor = document.getElementById("btn-colorSeccionRandom");
+let btnBgColor = document.getElementById("btn-colorFondoRandom");
 let btnUp = document.getElementById("btnArriba");
 let barProgeso = document.getElementById("barProgreso");
 let mensajeHora = document.getElementById("saludarHora");
@@ -24,15 +26,15 @@ if (!("speechSynthesis" in window)) {
  * FUNCIONES------>
  */
 
-//Función que cambia el color de fondo de una sección.
+//Función que genera un color aleatorio.
 function generadorColorAleatorio(){
     let red = Math.floor(Math.random()*256);
     let blue = Math.floor(Math.random()*256);
     let yellow = Math.floor(Math.random()*256);
-    return `rgba(${red}, ${blue}, ${yellow}`;
+    return `rgba(${red}, ${blue}, ${yellow})`;
 };
 
-//Función que muestra el porcentaje de la pagina en barra.
+//Función que muestra el porcentaje de la página en barra.
 function cargaBarraProgreso(){
     let scrollTop = window.scrollY;
     let alturaDocumento = document.documentElement.scrollHeight;
@@ -63,8 +65,32 @@ function obtenerTextoPagina(){
     return document.body.innerHTML;
 };
 
+//Función pra cambiar tamaño de texto de la página.
+function cambiarTamaTexto(){
+    let valorElegido = selecTama.value;
+    if (valorElegido === "pequeño"){
+        cuerpoP.style.fontSize = "14px";
+    }else if(valorElegido === "mediano"){
+        cuerpoP.style.fontSize = "20px";
+    }else if(valorElegido === "grande"){
+        cuerpoP.style.fontSize = "40px";
+    };
+
+};
+function cambiarTipografia(){
+    let valorElegido = selecTipo.value;
+    let fuente = "";
+    if (valorElegido === "courier"){
+        fuente= "'Courier New', Courier, monospace";
+    }else if(valorElegido === "verdana"){
+        fuente = "Verdana,Geneva, Tahoma, sans-serif";
+    }else if(valorElegido === "impact"){
+        fuente = "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif";
+    }
+    document.documentElement.style.setProperty('--tipografia-versatil', fuente);
+}
 //Función para reproducir lectura de la página.
-function leerPagina(){ //esto esta petando javascript.
+function leerPagina(){ 
     window.speechSynthesis.cancel();
     let obtenerTexto = obtenerTextoPagina();
     leer = new SpeechSynthesisUtterance(obtenerTexto);
@@ -81,8 +107,9 @@ function pararLectura(){
 };
 
 /**
- * Eventos
+ * EVENTOS
  */
+
 //Evento para hacer desaparecer btnUp.
 window.addEventListener("scroll",()=>{
     if(window.scrollY>300){
@@ -102,21 +129,43 @@ document.addEventListener("DOMContentLoaded",()=>{
     saludosHoras();
 });
 
+//Selector que cambia el tamaño de texto.
+selecTama.addEventListener("change", cambiarTamaTexto);
+
+//Selector que cambia la tipografia de texto.
+selecTipo.addEventListener("change",cambiarTipografia);
+
 //Botón que genera un color aleatorio de una sección.
 btnColor.addEventListener("click",()=>{
     let colorAleatorio = generadorColorAleatorio();
     colorSeccion.style.backgroundColor = colorAleatorio;
 });
 
+//Botón que genera un color de fondo aleatorio.
+btnBgColor.addEventListener("click",()=>{
+    let colorAleatorio = generadorColorAleatorio();
+    cuerpoP.style.backgroundColor = colorAleatorio;
+
+});
+
 //Botón que activa la función de contar clicks.
 btnClick.onclick = () => {
-    numClicks.innerHTML = `Llevas estos clicks: ${++clicks}`;
+    if(clicks >=50){
+        numClicks.innerHTML = `wow, llevas muchos clicks. ${++clicks}`;
+        console.log("aqui no entra");
+    } else{
+
+        numClicks.innerHTML = `Llevas estos clicks: ${++clicks}`;
+    }
+
 
 };
 
 //Botón que activa la función leer página web.
-btnStartLeer.addEventListener("click",leerPagina());
-btnStopLeer.addEventListener("click",pararLectura());
+btnStartLeer.addEventListener("click",leerPagina);
+
+//Botón que parar la función leer página web.
+btnStopLeer.addEventListener("click",pararLectura);
 
 //Scroll suave.
 btnUp.addEventListener("click", () => {
@@ -154,5 +203,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
-mostrarSaludo();
