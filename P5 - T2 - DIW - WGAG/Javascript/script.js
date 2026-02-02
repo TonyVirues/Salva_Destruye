@@ -138,13 +138,14 @@ selecTipo.addEventListener("change",cambiarTipografia);
 //Botón que genera un color aleatorio de una sección.
 btnColor.addEventListener("click",()=>{
     let colorAleatorio = generadorColorAleatorio();
+     colorSeccion.style.backgroundImage = "none";
     colorSeccion.style.backgroundColor = colorAleatorio;
 });
 
 //Botón que genera un color de fondo aleatorio.
 btnBgColor.addEventListener("click",()=>{
     let colorAleatorio = generadorColorAleatorio();
-    cuerpoP.style.backgroundColor = colorAleatorio;
+    cuerpoP.style.background = colorAleatorio;
 
 });
 
