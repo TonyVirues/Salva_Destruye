@@ -8,9 +8,17 @@ let barProgeso = document.getElementById("barProgreso");
 let mensajeHora = document.getElementById("saludarHora");
 let selecTipo =  document.getElementById("selectorTipografia");
 let selecTama =  document.getElementById("selectorTamaño");
-//Variable que guarda los clicks.
+let btnStartLeer = document.getElementById("startVoz");
+let btnStopLeer = document.getElementById("stopVoz");
+//Variable.
 let clicks = 0;
 let cuerpoP = document.body;
+let leer;
+
+//Comprobación que la web permite lectura por voz.
+if (!("speechSynthesis" in window)) {
+    alert("Tu navegador no soporta la lectura en voz.");
+}
 
 /**
  * FUNCIONES------>
@@ -50,6 +58,28 @@ function saludosHoras (){
     }
 };
 
+//Función obtener texto de la página.
+function obtenerTextoPagina(){
+    return document.body.innerHTML;
+};
+
+//Función para reproducir lectura de la página.
+function leerPagina(){ //esto esta petando javascript.
+    window.speechSynthesis.cancel();
+    let obtenerTexto = obtenerTextoPagina();
+    leer = new SpeechSynthesisUtterance(obtenerTexto);
+    leer.lang = "es-ES";
+    leer.rate = 1;
+    leer.pitch = 1;
+    window.speechSynthesis.speak(leer);
+};
+
+//Función para detener la lectura.
+function pararLectura(){
+    window.speechSynthesis.cancel();
+
+};
+
 /**
  * Eventos
  */
@@ -78,13 +108,17 @@ btnColor.addEventListener("click",()=>{
     colorSeccion.style.backgroundColor = colorAleatorio;
 });
 
-//Botón que activa la funcion de contar clicks.
+//Botón que activa la función de contar clicks.
 btnClick.onclick = () => {
     numClicks.innerHTML = `Llevas estos clicks: ${++clicks}`;
 
 };
 
-//Scroll suave
+//Botón que activa la función leer página web.
+btnStartLeer.addEventListener("click",leerPagina());
+btnStopLeer.addEventListener("click",pararLectura());
+
+//Scroll suave.
 btnUp.addEventListener("click", () => {
     window.scrollTo({
         top: 0,
