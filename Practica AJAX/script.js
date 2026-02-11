@@ -1,10 +1,12 @@
 console.log("que le ocurre");
 let dataArray = []
-let ususarios = document.getElementById("resultado");
+let tableBody = document.getElementById("resultado");
+
 fetch('https://jsonplaceholder.typicode.com/users')
   .then(response => response.json())
   .then(data => {
-      dataArray = data;
+    console.log(data)
+     // dataArray = data;
 
       
       //Gate
@@ -12,34 +14,30 @@ fetch('https://jsonplaceholder.typicode.com/users')
       
       // let mensaje = document.getElement("p");
       
-      dataArray.forEach(ususarios =>{
-          let parrafo = document.createElement("p");
-          parrafo.textContent = ususarios.name
-          ususarios.appendChild(parrafo);
-          // console.table(ususarios.name);
+      data.forEach(usuario =>{
+        
+        //Creación de filas.
+        let filas = document.createElement("tr");
+
+        //Creación de las columns.
+        let celdasNombre = document.createElement("td");
+        let celdasApellidos = document.createElement("td")
+
+          // let parrafo = document.createElement("p");
+
+          // parrafo.textContent = usuario.name
+
+        celdasNombre.textContent = usuario.name
+        celdasApellidos.textContent = usuario.username
+        console.table(usuario.name);
+
+        filas.appendChild(celdasNombre);
+        filas.appendChild(celdasApellidos);
+        tableBody.appendChild(filas);
+
+        // divResultado.appendChild(parrafo);
+
+          // console.table(resultado.name);
           
         });
 });
-
-
-
-// revisar
-// console.log("que le ocurre");
-
-// let dataArray = [];
-
-// fetch('https://jsonplaceholder.typicode.com/users')
-//   .then(response => response.json())
-//   .then(data => {
-
-//     dataArray = data;
-
-//     let contenedor = document.getElementById("resultado");
-
-//     dataArray.forEach(usuario => {
-//       let parrafo = document.createElement("p");
-//       parrafo.textContent = usuario.name;
-//       contenedor.appendChild(parrafo);
-//     });
-
-//   });

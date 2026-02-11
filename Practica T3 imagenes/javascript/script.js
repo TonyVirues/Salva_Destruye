@@ -48,12 +48,12 @@ function generarImagenes(cantidad) {
         const celdaId = document.createElement("td");
         celdaId.textContent = i;
 
-        //Crear las celdas con las imagenes
+        //Crear las celdas con las imagenes.
         const celdaImagenes = document.createElement("td");
         const imagenes = document.createElement("img");
 
 
-        const timestamp = Date.now();//Evitando el cache. Trucos que se aprenden
+        const timestamp = Date.now();//Evitando el cache. Trucos que se aprenden.
         imagenes.src = `https://picsum.photos/100/100?random=${i}&t=${timestamp}`;
         imagenes.className = "rounded-circle mx-auto mt-3";
         imagenes.loading = "lazy";
