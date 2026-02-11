@@ -3,12 +3,12 @@ console.log("que le ocurre");
 //Gate
 let tableBody = document.getElementById("resultado");
 
-fetch('https://jsonplaceholder.typicode.com/users')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)//Eliminar
+let dataArray = [];
 
-    data.forEach(usuario => {
+//Función que recorre el array de datos e imprime la tabla.
+function  crearTabla(dataArray){
+
+      dataArray.forEach(valor => {
 
       //Creación de filas.
       let filas = document.createElement("tr");
@@ -19,9 +19,9 @@ fetch('https://jsonplaceholder.typicode.com/users')
       let celdaCiudad = document.createElement("td");
 
       //Guardamos el valor en una celda.
-      celdaNombre.textContent = usuario.name;
-      celdaCorreo.textContent = usuario.email;
-      celdaCiudad.textContent = usuario.address.city;
+      celdaNombre.textContent = valor.name;
+      celdaCorreo.textContent = valor.email;
+      celdaCiudad.textContent = valor.address.city;
       
       //Imprimimos las celdas creadas en el html.
       filas.appendChild(celdaNombre);
@@ -30,4 +30,15 @@ fetch('https://jsonplaceholder.typicode.com/users')
       tableBody.appendChild(filas);
 
     });
+}
+
+//Extracción de datos de la Apis.
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(data => {
+
+    console.log(data)//Eliminar.
+    dataArray = data;
+    crearTabla(dataArray);
+
   });
