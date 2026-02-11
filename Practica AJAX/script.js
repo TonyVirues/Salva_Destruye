@@ -1,4 +1,6 @@
 console.log("que le ocurre");
+
+//Gate
 let dataArray = []
 let tableBody = document.getElementById("resultado");
 
@@ -6,38 +8,25 @@ fetch('https://jsonplaceholder.typicode.com/users')
   .then(response => response.json())
   .then(data => {
     console.log(data)
-     // dataArray = data;
 
-      
-      //Gate
-      
-      
-      // let mensaje = document.getElement("p");
-      
-      data.forEach(usuario =>{
-        
-        //Creación de filas.
-        let filas = document.createElement("tr");
+    data.forEach(usuario => {
 
-        //Creación de las columns.
-        let celdasNombre = document.createElement("td");
-        let celdasApellidos = document.createElement("td")
+      //Creación de filas.
+      let filas = document.createElement("tr");
 
-          // let parrafo = document.createElement("p");
+      //Creación de las columns.
+      let celdaNombre = document.createElement("td");
+      let celdaCorreo = document.createElement("td");
+      let celdaCiudad = document.createElement("td");
 
-          // parrafo.textContent = usuario.name
+      celdaNombre.textContent = usuario.name;
+      celdaCorreo.textContent = usuario.email;
+      celdaCiudad.textContent = usuario.address.city;
 
-        celdasNombre.textContent = usuario.name
-        celdasApellidos.textContent = usuario.username
-        console.table(usuario.name);
+      filas.appendChild(celdaNombre);
+      filas.appendChild(celdaCorreo);
+      filas.appendChild(celdaCiudad);
+      tableBody.appendChild(filas);
 
-        filas.appendChild(celdasNombre);
-        filas.appendChild(celdasApellidos);
-        tableBody.appendChild(filas);
-
-        // divResultado.appendChild(parrafo);
-
-          // console.table(resultado.name);
-          
-        });
-});
+    });
+  });
