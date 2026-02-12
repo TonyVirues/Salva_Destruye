@@ -131,6 +131,7 @@ function addCliente(){
     let apellido = inputApellido.value.trim();
     let email = inputEmail.value.trim();
     let telefono = inputTelefono.value.trim();
+    
     if(prohibidoCamposVacios(nombre,apellido,email,telefono)){
         Swal.fire({
             title: "<strong>Inputs! <u>Vacios!</u></strong>",
