@@ -44,6 +44,7 @@ $(document).ready(function() {
             $tbody.append(fila);
         });    
     };
+    
     //Función para guardar el localStorage
     function guardarLocalStorage() {
     localStorage.setItem("tareasAñadidas", JSON.stringify(tareasAñadidas));

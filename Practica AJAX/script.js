@@ -3,23 +3,22 @@ console.log("que le ocurre");
 //Gate
 let tableBody = document.getElementById("resultado");
 let selectorOrden = document.getElementById("orden");
-let inputBuscarNombre = document.getElementById("busqueda");
+// let inputBuscarNombre = document.getElementById("inputBusqueda");
+let btnBuscar = document.getElementById("btnBuscar");
 
 let dataArray = [];
-let buscadorNombre = inputBuscarNombre.value.trim();
+
 
 
 /**
  * FUNCIONES
  */
 
+//Función que recoge los datos de la API.
 async function iniciarApp() {
-
   dataArray = await extraerDatos();
   crearTabla(dataArray);
 }
-
-
 
 //Función que pinta la tabla.
 function crearTabla(dataArray) {
@@ -50,51 +49,27 @@ function crearTabla(dataArray) {
     });
 }
 
-//Función que recorre el array de datos e imprime la tabla.
+//Función que ordena los datos por alfabeticamente.
 function  ordenAscendente(){
-  copiadataArray = [...dataArray];
   tableBody.innerHTML ="";
+  let copiadataArray = [];
+  copiadataArray = dataArray;
   copiadataArray.sort((a,b) => a.name.localeCompare(b.name));
   crearTabla(copiadataArray);
 
 }
 
+//Función que ordena los dato alfabeticamente de forma descendente.
 function ordenarDescendente(){
-
   tableBody.innerHTML ="";
-  copiadataArray = [...dataArray]
+  let copiadataArray = [];
+  copiadataArray = dataArray;
   copiadataArray.sort((a,b) => b.name.localeCompare(a.name));
   crearTabla(copiadataArray);
 
 }
 
-
-//Función que busca nombre en el los datos.
-// async function buscarNombre(){
-//   let data = await extraerDatos();
-//   data.forEach(value => {
-//     if (value.name==buscadorNombre){
-//       console.log("entramos");
-//             //Creación de filas.
-//       let filas = document.createElement("tr");
-
-//       //Creación de las diferentes celdas.
-//       let celdaNombre = document.createElement("td");
-//       //Guardamos el valor en una celda.
-//       celdaNombre.textContent = value.name;   
-//       //Imprimimos las celdas creadas en el html.
-//       filas.appendChild(celdaNombre);
-//       tableBody.appendChild(filas);
-
-//     }else{
-//       let filas = document.createElement("tr");
-//       let celdaNombre = document.createElement("td");
-//       celdaNombre.textContent = "explote"
-//       console.log("exploto")
-//     }
-//   });
-  
-// }
+//Función que busca el nombre.
 
 /**
  * EVENTOS.
@@ -110,6 +85,11 @@ selectorOrden.addEventListener("change", () => {
     }
 });
 
+//Input que registra lo escrito.
+// inputBuscarNombre.addEventListener("input",)
+
+
+
 //Extracción de datos de la Apis.
 async function extraerDatos(){
 
@@ -122,4 +102,9 @@ async function extraerDatos(){
     console.error("Error al obtener datos:", error);
   }
 };
+
+/**
+ * Llamamos a la función iniciarapp
+ * para la extracción de datos y imprimacion de la tabla.
+ */
 iniciarApp();
