@@ -70,11 +70,11 @@ function ordenarDescendente(){
 
 //Función que busca el nombre.
 function buscarNombre(){
-  let nombre = inputBuscarNombre.value.trim().toLowerCase();
-  if (nombre == ""){
+  let textoBusqueda = inputBuscarNombre.value.trim().toLowerCase();
+  if (textoBusqueda == ""){
     tablaVacia();
   }else{
-    let resultadoBuscar = dataArray.filter(value => value.name.toLowerCase() === nombre);
+    let resultadoBuscar = dataArray.filter(value => value.name.toLowerCase() === textoBusqueda || value.address.city.toLowerCase() === textoBusqueda );
     if (resultadoBuscar.length === 0){
       tablaVacia();
     }else{
