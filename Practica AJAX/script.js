@@ -29,6 +29,7 @@ let cantidadPorPagina = 2;
 async function iniciarApp() {
   dataArray = await extraerDatos();
   // crearTabla(dataArray); //quitamos crear tabla y metemos la funcion de la paginacion
+  cambiarTamaño();
   paginasContenido();
 }
 
@@ -77,9 +78,9 @@ function buscarNombre(){
 }
 
 //Función que cambia el tamaño de la tabla.
-// function cambiarTamaño(){
-//   return cantidadPorPagina = parseInt(selectorTamaño.value);
-// }
+function cambiarTamaño(){
+  return cantidadPorPagina = parseInt(selectorTamaño.value);
+}
 
 //Función que ordena los datos por alfabeticamente.
 function  ordenAscendente(){
@@ -219,12 +220,13 @@ btnBuscar.addEventListener("click", ()=>{
 });
 
 //Selector que cambia el valor del tamaño de la tabla.
-// selectorTamaño.addEventListener("change", ()=>{
-//   cambiarTamaño();
-//   paginaActual = 1;
-//   paginasContenido();
+selectorTamaño.addEventListener("change", ()=>{
+  cambiarTamaño();
+  paginaActual = 1;
+  paginasContenido();
 
-// });
+
+});
 
 //Selector que ordena alfabeticament en orden ascendente.
 selectorOrden.addEventListener("change", () => {
