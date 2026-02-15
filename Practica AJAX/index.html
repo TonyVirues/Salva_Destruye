@@ -9,89 +9,98 @@
   <title>AJAX Avanzado</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="bg-secondary">
-    <div class="container mt-5">
+<body>
+  <div class="container mt-5">
 
-        <h1 class="mb-4">AJAX con API externa</h1>
-      
-        <!-- Buscador -->
+    <h1 class="mb-4" style="color: #EAEAEA">AJAX con API externa</h1>
 
-        <input  type="text" id="inputBusqueda" class="form-control mb-3" placeholder="Buscar por nombre">
-        <button id="btnBuscar" class="btn btn-dark col-2 mb-3" type ="button">Buscar</button>
-        
-        <!-- Ordenación -->
-        <div class="row">
-          <div class="col-2">
-            <select id="tamaño" class="form-select mb-3">
-              <option value="2">2</option>
-              <option value="5">5</option>
-              <option value="7">7</option>
-            </select>
-          </div>
+    <!-- Buscador -->
 
-          <div class="col-2">
-            <select id="orden"  class="form-select mb-3">        
-              <option  value="asc">Orden A–Z</option>         
-              <option  value="desc">Orden Z–A</option>
-            </select>
-          </div>
+    <input type="text" id="inputBusqueda" class="form-control mb-3" placeholder="Buscar por nombre o ciudad">
+    <button id="btnBuscar" class="btn btn-outline-light col-2 mb-3" type="button">Buscar</button>
+    <button id = "recargar" class="btn btn-info col-2 mb-3">Recargar</button>
 
-        </div>
-      
-        <!--Tabla-->
-        <table class="table table-dark table-striped table-hover">
+    <!-- Ordenación -->
+    <div class="row">
+      <div class="col-2">
+        <select id="tamaño" class="form-select mb-3">
+          <option selected>Default</option>
+          <option value="2">2</option>
+          <option value="5">5</option>
+          <option value="7">7</option>
+        </select>
+      </div>
 
-          <thead class="bg-secondary">
-              <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Email</th>
-                <th scope="col">Ciudad</th>
-              </tr>
-          </thead>
-
-          <tbody id ="resultado" >
-
-          <!--Relleno con la API.-->
-
-          </tbody>
-
-        </table>    
-      
-        <!-- Resultados -->
-      
-        <div>
-          
-        </div>
-      
-      
-      
-        <!-- Paginación -->
-      
-        <div class="mt-4">
-      
-        <p>Mostrando x resultados de y totales</p>
-      
-        </div>
-      
-      
-      
-        <div class="mt-4">
-      
-        <button id="principio" class="btn btn-dark"> Ir primera</button>
-      
-          <button id="prev" class="btn btn-dark">Anterior</button>
-      
-          <button id="next" class="btn btn-dark">Siguiente</button>
-      
-      <button id="ultima" class="btn btn-dark">Ir última</button>
-      
-        </div>
+      <div class="col-2">
+        <select id="orden" class="form-select mb-3">
+          <option value="asc">Orden A–Z</option>
+          <option value="desc">Orden Z–A</option>
+        </select>
+      </div>
 
     </div>
-<script src="script.js"></script>
+
+    <!--Tabla-->
+    <table class="table table-dark border-light table-striped table-hover">
+
+      <thead class="bg-secondary">
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Ciudad</th>
+        </tr>
+      </thead>
+
+      <tbody id="resultado">
+
+        <!--Relleno con la API.-->
+
+      </tbody>
+
+    </table>
+
+    <!--Spinner-->
+    <div id="spinner" class="text-center mt-3" style="display: none;">
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Espera, no seas tan durillo</span>
+      </div>
+      <p class="text-light mt-2">Me tomo las cosas con calma...</p>
+    </div>
+
+    <!-- Resultados -->
+
+    <div>
+
+    </div>
+
+
+
+    <!-- Paginación -->
+    <!--Mostrando la página actual y las páginas totales.-->
+    <div class="mt-4">
+      <div id="numeroPaginas" class="mt-3"></div>
+    </div>
+
+
+
+    <div class="mt-4">
+
+      <button id="principio" class="btn btn-dark "> Ir primera</button>
+
+      <button id="prev" class="btn btn-dark">Anterior</button>
+
+      <button id="next" class="btn btn-dark ">Siguiente</button>
+
+      <button id="ultima" class="btn btn-dark ">Ir última</button>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
 
 </body>
 

@@ -1,0 +1,12 @@
+body { /*Selector por etiqueta*/
+    background-color: #2E323C;
+    color: #B0B0B0; /*Color secundario de letra*/
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 60px;
+}
+h1, h3 { /*Selectores agrupados*/
+    font-family: poppins, sans-serif;
+    color: #EAEAEA; /*Color principal de letra*/
+}

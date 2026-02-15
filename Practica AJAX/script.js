@@ -10,20 +10,42 @@ let btnInicio = document.getElementById("principio");
 let btnAtras = document.getElementById("prev");
 let btnSiguiente = document.getElementById("next");
 let btnFin = document.getElementById("ultima");
+let spinner = document.getElementById("spinner");
+let contadorPaginas = document.getElementById("numeroPaginas");
+let recargar = document.getElementById("recargar");
 
 //Array para almacenar los datos extraídos.
-let dataArray = [];
+// let dataArray = []; //APIDEJODEFUNCIONAR
+let dataArray = [
+  { name: "Shoyo Hinata", email: "hinata@karasuno.jp", address: { city: "Miyagi" } },
+  { name: "Tobio Kageyama", email: "kageyama@karasuno.jp", address: { city: "Kitagawa Daiichi" } },
+  { name: "Daichi Sawamura", email: "daichi@karasuno.jp", address: { city: "Miyagi" } },
+  { name: "Kosshi Sugawara", email: "sugawara@karasuno.jp", address: { city: "Miyagi" } },
+  { name: "Asahi Azumane", email: "asahi@karasuno.jp", address: { city: "Akita" } },
+  { name: "Yu Nishinoya", email: "nishinoya@karasuno.jp", address: { city: "Chiba" } },
+  { name: "Kei Tsukishima", email: "tsukishima@karasuno.jp", address: { city: "Sendai" } },
+  { name: "Tadashi Yamaguchi", email: "yamaguchi@karasuno.jp", address: { city: "Miyagi" } },
+  { name: "Toru Oikawa", email: "oikawa@aoba-johsai.jp", address: { city: "Aoba Johsai" } },
+  { name: "Hajime Iwaizumi", email: "iwaizumi@aoba-johsai.jp", address: { city: "Miyagi" } }
+];
+
+
 
 //Variables de paginación.
 let paginaActual = 1;
-let cantidadPorPagina = 2;
+let cantidadPorPagina = 1;
 
-
+/**
+ * LA API HA DEJADO DE FUNCIONAR
+ * SE COMENTO "EXTRAERDATOS"
+ * TAMBIEN LA RAID PRINCIPAL QUE USA LA API.
+ * FUNCINA CORRECTAMENTE LOS SELECTORES 
+ */
 
 /**
  * FUNCIONES
  */
-//FUNCIONES QUE MODIFICAN LA TABLA-------->
+//<------------------FUNCIONES QUE MODIFICAN LA TABLA-------->
 
 //Función que inicia la app, pintando la tabla y guardando los datos extraídos.
 async function iniciarApp() {
@@ -32,7 +54,12 @@ async function iniciarApp() {
   cambiarTamaño();
   paginasContenido();
 }
-
+//Función para recargar la api donde la volvemos a llamar.
+async function recargarApi(){
+  paginaActual=1;
+  dataArray =  await extraerDatos();
+  paginasContenido();
+}
 //Función que pinta la tabla.
 function crearTabla(dataArray) {
 
@@ -126,7 +153,18 @@ function tablaVacia(){
     
 }
 
-//FUNCIONES DE PAGINACIÓN.------->
+//Función que muestra el spinner
+function mostrarSpinner() {
+  spinner.style.display = "block";
+}
+
+//función que desabilita el spinner
+function ocultarSpinner() {
+  spinner.style.display = "none";
+}
+
+
+//<----------------FUNCIONES DE PAGINACIÓN.------->
 
 //Función que devuelve el numero total de páginas disponibles.
 function obtenerPaginasTotales(){
@@ -143,6 +181,7 @@ function paginasContenido(){
 
   crearTabla(imprimirPaginas);
   gestionBotones();
+  actualizarnumeroPaginas();
 }
 
 //Función que valida botones segun la página.
@@ -210,6 +249,12 @@ function irUltima(){
   paginasContenido();
 }
 
+//Función que imprime los números de página.
+function actualizarnumeroPaginas() {
+  let totalPaginas = obtenerPaginasTotales();
+  contadorPaginas.textContent = `Página ${paginaActual} de ${totalPaginas}`;
+}
+
 /**
  * EVENTOS.
  */
@@ -259,18 +304,20 @@ btnFin.addEventListener("click",()=>{
 });
 
 
-//Función que extrae datos de la Apis.
-async function extraerDatos(){
+//Función que extrae datos de la Apis. //LA API DEJO DE FUNCIONAR CREANDO ALTERNATIVA 
+// async function extraerDatos(){
 
-  try {
-    let  response = await fetch('https://jsonplaceholder.typicode.com/users');
-    let data = await response.json();
+//   try {
+//     mostrarSpinner();
+//     let  response = await fetch('https://jsonplaceholder.typicode.com/users');
+//     let data = await response.json();
+//     ocultarSpinner();
     
-    return data;
-  } catch (error) {
-    console.error("Error al obtener datos:", error);
-  }
-};
+//     return data;
+//   } catch (error) {
+//     console.error("Error al obtener datos:", error);
+//   }
+// };
 
 /**
  * Llamamos a la función iniciarapp
