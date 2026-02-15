@@ -2,8 +2,9 @@ console.log("que le ocurre");
 // OFFSET = (PAG-1)*LIMIT SACAR PAGINAS PAGES=COUNT/LIMIT Y REDODNEAR HACIA ARRIBA
 //Gate
 let tableBody = document.getElementById("resultado");
-let selectorOrden = document.getElementById("orden");
 let inputBuscarNombre = document.getElementById("inputBusqueda");
+let selectorOrden = document.getElementById("orden");
+let selectorTamaño = document.getElementById("tamaño");
 let btnBuscar = document.getElementById("btnBuscar");
 let btnInicio = document.getElementById("principio");
 let btnAtras = document.getElementById("prev");
@@ -22,7 +23,7 @@ let cantidadPorPagina = 2;
 /**
  * FUNCIONES
  */
-//Funciones de tablas -------->
+//FUNCIONES QUE MODIFICAN LA TABLA-------->
 
 //Función que inicia la app, pintando la tabla y guardando los datos extraídos.
 async function iniciarApp() {
@@ -60,25 +61,6 @@ function crearTabla(dataArray) {
     });
 }
 
-//Función que ordena los datos por alfabeticamente.
-function  ordenAscendente(){
-  tableBody.innerHTML ="";
-  let copiadataArray = [];
-  copiadataArray = dataArray;
-  copiadataArray.sort((a,b) => a.name.localeCompare(b.name));
-  crearTabla(copiadataArray);
-  
-}
-
-//Función que ordena los dato alfabeticamente de forma descendente.
-function ordenarDescendente(){
-  tableBody.innerHTML ="";
-  let copiadataArray = [];
-  copiadataArray = dataArray;
-  copiadataArray.sort((a,b) => b.name.localeCompare(a.name));
-  crearTabla(copiadataArray);
-}
-
 //Función que busca el nombre.
 function buscarNombre(){
   let textoBusqueda = inputBuscarNombre.value.trim().toLowerCase();
@@ -92,6 +74,30 @@ function buscarNombre(){
       crearTabla(resultadoBuscar);
     }
   }
+}
+
+//Función que cambia el tamaño de la tabla.
+// function cambiarTamaño(){
+//   return cantidadPorPagina = parseInt(selectorTamaño.value);
+// }
+
+//Función que ordena los datos por alfabeticamente.
+function  ordenAscendente(){
+  tableBody.innerHTML ="";
+  let copiadataArray = [];
+  copiadataArray = dataArray;
+  copiadataArray.sort((a,b) => a.name.localeCompare(b.name));
+  paginasContenido(copiadataArray);
+  
+}
+
+//Función que ordena los dato alfabeticamente de forma descendente.
+function ordenarDescendente(){
+  tableBody.innerHTML ="";
+  let copiadataArray = [];
+  copiadataArray = dataArray;
+  copiadataArray.sort((a,b) => b.name.localeCompare(a.name));
+  paginasContenido(copiadataArray);
 }
 
 //Función que imprime tabla "no hay registros".
@@ -119,7 +125,7 @@ function tablaVacia(){
     
 }
 
-//Funciones de paginación -------->
+//FUNCIONES DE PAGINACIÓN.------->
 
 //Función que devuelve el numero total de páginas disponibles.
 function obtenerPaginasTotales(){
@@ -174,6 +180,7 @@ function gestionBotones(){
     btnSiguiente.removeAttribute("disabled");
   }
 }
+
 //Función que dirige la págiancion a la primera.
 function irPrimera(){
   paginaActual=1;
@@ -195,6 +202,7 @@ function pagSiguiente(){
     paginasContenido();
   }
 }
+
 //Función que dirige a la última página.
 function irUltima(){
   paginaActual=obtenerPaginasTotales();
@@ -204,6 +212,19 @@ function irUltima(){
 /**
  * EVENTOS.
  */
+
+//Botón que activa la función "buscarNombre".
+btnBuscar.addEventListener("click", ()=>{
+  buscarNombre();
+});
+
+//Selector que cambia el valor del tamaño de la tabla.
+// selectorTamaño.addEventListener("change", ()=>{
+//   cambiarTamaño();
+//   paginaActual = 1;
+//   paginasContenido();
+
+// });
 
 //Selector que ordena alfabeticament en orden ascendente.
 selectorOrden.addEventListener("change", () => {
@@ -215,27 +236,25 @@ selectorOrden.addEventListener("change", () => {
     }
 });
 
-//Botón que activa la función "buscarNombre".
-btnBuscar.addEventListener("click", ()=>{
-  buscarNombre();
-})
-
 //Boton que dirige a la primera página.
 btnInicio.addEventListener("click",()=>{
   irPrimera();
-})
+});
+
 //Boton que actica la funcion "pagAnterior()".
 btnAtras.addEventListener("click",()=>{
   pagAnterior()
-})
+});
+
 //Boton que actica la funcion "pagSiguiente()".
 btnSiguiente.addEventListener("click",()=>{
   pagSiguiente()
-})
+});
+
 //Boton que actica la funcion " irUltima()".
 btnFin.addEventListener("click",()=>{
   irUltima()
-})
+});
 
 
 //Función que extrae datos de la Apis.
